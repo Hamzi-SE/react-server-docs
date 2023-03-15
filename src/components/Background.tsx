@@ -2,7 +2,13 @@
 
 import { useTheme } from '@mui/material';
 import clsx from 'clsx';
-import React, { FunctionComponent, useEffect, useMemo, useRef } from 'react';
+import React, {
+  FunctionComponent,
+  PropsWithChildren,
+  useEffect,
+  useMemo,
+  useRef,
+} from 'react';
 
 enum Vanta {
   CLOUDS,
@@ -28,7 +34,9 @@ type VantaBackgroudProps = {
   dark: any;
 };
 
-export const VantaBackground: FunctionComponent<VantaBackgroudProps> = ({
+export const VantaBackground: FunctionComponent<
+  PropsWithChildren<VantaBackgroudProps>
+> = ({
   enabled = false,
   children,
   light = SunnyBlueClouds,
@@ -52,17 +60,20 @@ export const VantaBackground: FunctionComponent<VantaBackgroudProps> = ({
     };
   }, []);
 
-  const render = useMemo(() => () => {
-    const fn = window.VANTA[type] || window.VANTA.CLOUDS;
-    if (enabled) {
-      instance.current = fn({
-        ...sharedProps,
-        ...rest,
-      });
-    } else if (instance.current && instance.current.destroy) {
-      instance.current.destroy();
-    }
-  });
+  const render = useMemo(
+    () => () => {
+      const fn = window.VANTA[type] || window.VANTA.CLOUDS;
+      if (enabled) {
+        instance.current = fn({
+          ...sharedProps,
+          ...rest,
+        });
+      } else if (instance.current && instance.current.destroy) {
+        instance.current.destroy();
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     if (!window.VANTA) return;
@@ -76,7 +87,7 @@ export const VantaBackground: FunctionComponent<VantaBackgroudProps> = ({
   }, [enabled, dark, light, type]);
 
   useEffect(() => {
-    document.getElementById('vanta').addEventListener('load', render);
+    document.getElementById('vanta')?.addEventListener('load', render);
     return () => {
       document.getElementById('vanta')?.removeEventListener('load', render);
     };
