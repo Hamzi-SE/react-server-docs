@@ -20,9 +20,13 @@ export default function ButtonAppBar() {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          React Server
-        </Typography>
+        <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+          <img src="/react-server.png" style={{ width: 24, height: 24 }} />
+
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            React Server
+          </Typography>
+        </Box>
       </Toolbar>
     </AppBar>
   );

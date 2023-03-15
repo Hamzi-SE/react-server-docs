@@ -4,12 +4,12 @@ import { getMainDefinition } from '@apollo/client/utilities';
 
 // Create an HTTP link
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://graphql.state-less.cloud/graphql',
 });
 
 // Create a WebSocket link
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000/graphql`,
+  uri: `ws://graphql.state-less.cloud/graphql`,
   options: {
     reconnect: true,
   },
