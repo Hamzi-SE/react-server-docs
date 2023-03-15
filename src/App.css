@@ -4,9 +4,17 @@
 /* Apply Roboto font to all elements */
 body {
   font-family: 'Roboto', sans-serif;
+  margin: 0px;
 }
 
 /* Apply monospace Roboto font to pre code elements */
 pre code {
   font-family: 'Roboto Mono', monospace;
+}
+
+.light.animated .MuiPaper-root:not(.opaque) {
+  /* background-color: #1E1F27AA !important; */
+  background-color: #ffffff33 !important;
+
+  backdrop-filter: blur(6px);
 }

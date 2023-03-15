@@ -2,14 +2,16 @@ import React, { createContext, useReducer } from 'react';
 
 type State = {
   menuOpen: boolean;
+  animatedBackground: boolean;
 };
 const initialState: State = {
   menuOpen: false,
+  animatedBackground: false,
 };
 
 export const stateContext = createContext({
   state: initialState,
-  dispatch: (state, action) => {},
+  dispatch: null,
 });
 
 export type Action = { type: string; value: any };
@@ -20,6 +22,11 @@ const reducer = (state: State, action: Action) => {
       return {
         ...state,
         menuOpen: !state.menuOpen,
+      };
+    case 'TOGGLE_ANIMATED_BACKGROUND':
+      return {
+        ...state,
+        animatedBackground: !state.animatedBackground,
       };
   }
   return state;

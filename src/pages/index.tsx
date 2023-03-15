@@ -7,6 +7,13 @@ import { Alert, Button, Box } from '@mui/material';
 import { useServerState } from '@state-less/react-client';
 import client, { localClient } from '../lib/client';
 import ButtonAppBar from '../components/AppBar';
+import {
+  DarkWaves,
+  SunnyBlueClouds,
+  VantaBackground,
+} from '../components/Background';
+import { useContext } from 'react';
+import { stateContext } from '../provider/StateProvider';
 
 export const IndexPage = () => {
   const [value, setValue, localInfo] = useServerState('Hello World', {
@@ -22,31 +29,40 @@ export const IndexPage = () => {
     client,
   });
 
+  const { state } = useContext(stateContext);
   return (
-    <Container maxWidth="md">
-      <ButtonAppBar />
+    <VantaBackground
+      light={SunnyBlueClouds}
+      dark={DarkWaves}
+      enabled={state.animatedBackground}
+    >
+      <Box sx={{ maxHeight: 'calc(100vh)', overflow: 'scroll' }}>
+        <Container maxWidth="md">
+          <ButtonAppBar />
 
-      <Paper sx={{ marginTop: 8, padding: 8 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 4 }}>
-          <img
-            src="/react-server.png"
-            alt="React Server"
-            style={{ width: 256, height: 256 }}
-          />
-          <div>
-            <Markdown>
-              {`
+          <Paper sx={{ marginTop: 9, padding: 8 }}>
+            <Box
+              sx={{ display: 'flex', justifyContent: 'space-between', gap: 4 }}
+            >
+              <img
+                src="/react-server.png"
+                alt="React Server"
+                style={{ width: 256, height: 256 }}
+              />
+              <div>
+                <Markdown>
+                  {`
 # React Server
 
 ## Introduction
 
 Looking to build *modular and scalable* backends in minutes? Look no further than React Server! This unique approach to backend development lets you create reusable components on the server side that serve as building blocks for your entire backend. With React Server, you can consume components instead of REST APIs, streamlining your data loading mechanisms and simplifying your development process. Plus, React Server is stateless, making it easy to scale and maintain your backend infrastructure. Build your own ecosystem of reusable backend components, prototype sophisticated services with minimal proprietary code, and offer your backend components as a service with ease. Try React Server today and streamline your backend development process like never before!
 `}
-            </Markdown>
-          </div>
-        </Box>
-        <Markdown>
-          {`
+                </Markdown>
+              </div>
+            </Box>
+            <Markdown>
+              {`
 ## Why React Server?
 
 * Simplified Data Management: React Server uses GraphQL as transportation, making it easy to query and manage data on both the server and client sides of your application. With GraphQL, you can specify exactly what data you need, reducing the amount of data transfer and improving performance.
@@ -69,16 +85,16 @@ cd .\my-server\
 npm start
 \`\`\`
 `}
-        </Markdown>
-        {loading && <Alert severity="warning">Connecting</Alert>}
-        {error && (
-          <>
-            <Alert severity="error">
-              {error?.message === 'Failed to fetch'
-                ? 'No server is reachable on https://localhost:4000.'
-                : error.message}
-            </Alert>
-            <Markdown>{`
+            </Markdown>
+            {loading && <Alert severity="warning">Connecting</Alert>}
+            {error && (
+              <>
+                <Alert severity="error">
+                  {error?.message === 'Failed to fetch'
+                    ? 'No server is reachable on https://localhost:4000.'
+                    : error.message}
+                </Alert>
+                <Markdown>{`
 #### Uh oh. 
 It seems like you do not have a local server running. For the best experience, please start a local server.
 
@@ -95,14 +111,14 @@ yarn start
 \`\`\`	
 *Hint: reload the page once your server is running.*
         `}</Markdown>
-          </>
-        )}
-        {!loading && !error && (
-          <Alert severity="success">Server is running.</Alert>
-        )}
+              </>
+            )}
+            {!loading && !error && (
+              <Alert severity="success">Server is running.</Alert>
+            )}
 
-        <Markdown>
-          {`
+            <Markdown>
+              {`
 ### Get a Client running
 \`\`\`
 yarn create vite
@@ -123,15 +139,23 @@ const [count, setCount] = useServerState(0, {
 This is all it needs to get a server and client running. 
 You can now manipulate the state from a graphql client.
 `}
-        </Markdown>
-        <Alert severity="info">
-          Increase the count by clicking the button below. The count is stored
-          on the server.
-        </Alert>
-        <Box sx={{ display: 'flex' }}>
-          <Button onClick={() => setCount(count + 1)}>Count is {count}</Button>
-        </Box>
-      </Paper>
-    </Container>
+            </Markdown>
+            <Alert severity="info">
+              Increase the count by clicking the button below. The count is
+              stored on the server.
+            </Alert>
+            <Box sx={{ display: 'flex' }}>
+              <Button
+                color="secondary"
+                variant="contained"
+                onClick={() => setCount(count + 1)}
+              >
+                Count is {count}
+              </Button>
+            </Box>
+          </Paper>
+        </Container>
+      </Box>
+    </VantaBackground>
   );
 };

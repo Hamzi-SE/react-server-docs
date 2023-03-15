@@ -10,14 +10,22 @@ import { routes } from './routes';
 
 import './App.css';
 import { ApolloProvider } from '@apollo/client';
+import { ThemeProvider } from './provider/ThemeProvider';
+import {
+  DarkWaves,
+  SunnyBlueClouds,
+  VantaBackground,
+} from './components/Background';
 
 function App() {
   return (
     <div className="App">
       <StateProvider>
-        <Router>
-          <Routes>{routes}</Routes>
-        </Router>
+        <ThemeProvider>
+          <Router>
+            <Routes>{routes}</Routes>
+          </Router>
+        </ThemeProvider>
       </StateProvider>
     </div>
   );

@@ -6,8 +6,10 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { stateContext } from '../provider/StateProvider';
 
 export default function ButtonAppBar() {
+  const { dispatch } = React.useContext(stateContext);
   return (
     <AppBar>
       <Toolbar>
@@ -27,6 +29,13 @@ export default function ButtonAppBar() {
             React Server
           </Typography>
         </Box>
+        <Box sx={{ flexGrow: 1 }}></Box>
+        <Button
+          color="inherit"
+          onClick={() => dispatch({ type: 'TOGGLE_ANIMATED_BACKGROUND' })}
+        >
+          Animate
+        </Button>
       </Toolbar>
     </AppBar>
   );
