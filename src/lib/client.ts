@@ -9,7 +9,7 @@ const httpLink = new HttpLink({
 
 // Create a WebSocket link
 const wsLink = new WebSocketLink({
-  uri: `ws://graphql.state-less.cloud/graphql`,
+  uri: `wss://graphql.state-less.cloud/graphql`,
   options: {
     reconnect: true,
   },
