@@ -5,17 +5,17 @@ import Markdown from 'react-markdown';
 import { Alert, Button, Box } from '@mui/material';
 
 import { useServerState } from '@state-less/react-client';
-import client from '../lib/client';
+import client, { localClient } from '../lib/client';
 import ButtonAppBar from '../components/AppBar';
 
 export const IndexPage = () => {
-  const [value, setValue, info] = useServerState('Hello World', {
+  const [value, setValue, localInfo] = useServerState('Hello World', {
     key: 'hello-world',
     scope: 'global',
-    client,
+    client: localClient,
   });
-  const { loading, error } = info || {};
-  console.log('info', info);
+  const { loading, error } = localInfo || {};
+  console.log('info', localInfo);
   const [count, setCount] = useServerState(0, {
     key: 'count',
     scope: 'global',
@@ -28,6 +28,11 @@ export const IndexPage = () => {
 
       <Paper sx={{ marginTop: 8, padding: 8 }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 4 }}>
+          <img
+            src="/react-server.png"
+            alt="React Server"
+            style={{ width: 256, height: 256 }}
+          />
           <div>
             <Markdown>
               {`
@@ -68,10 +73,27 @@ npm start
         {loading && <Alert severity="warning">Connecting</Alert>}
         {error && (
           <>
-            <Alert severity="error">{error?.message}</Alert>
+            <Alert severity="error">
+              {error?.message === 'Failed to fetch'
+                ? 'No server is reachable on https://localhost:4000.'
+                : error.message}
+            </Alert>
             <Markdown>{`
 #### Uh oh. 
 It seems like you do not have a local server running. For the best experience, please start a local server.
+
+Make sure your chrome is set up to allow self signed certificates.
+[chrome://flags/#allow-insecure-localhost](chrome://flags/#allow-insecure-localhost)
+
+In case the initializiation did not work you can manually set up a server. It's a little more work but it's worth it.
+\`\`\`
+git clone state-less/clean-starter -b react-server my-server
+cd my-server
+git remote remove origin
+yarn install
+yarn start
+\`\`\`	
+*Hint: reload the page once your server is running.*
         `}</Markdown>
           </>
         )}
@@ -84,24 +106,22 @@ It seems like you do not have a local server running. For the best experience, p
 ### Get a Client running
 \`\`\`
 yarn create vite
-yarn add state-less/react-client#v3
+yarn add @apollo/client state-less/react-client
 \`\`\`
-#### Import the react hooks
+#### Edit \`src/App.tsx\`
 \`\`\`
 import { useServerState } from '@state-less/react-client'
 
-const App = () => {
+// ...
+
 const [count, setCount] = useServerState(0, {
-key: 'count',
-scope: 'global',
+    key: 'count',
+    scope: 'global',
 })
-}
-
-<h1>{value}</h1>
 \`\`\`
-
+### Play around
 This is all it needs to get a server and client running. 
-You can now manipulate the state from a graphql client and see the changes in the browser.
+You can now manipulate the state from a graphql client.
 `}
         </Markdown>
         <Alert severity="info">
@@ -109,10 +129,7 @@ You can now manipulate the state from a graphql client and see the changes in th
           on the server.
         </Alert>
         <Box sx={{ display: 'flex' }}>
-          <Typography component="div" sx={{ flexGrow: 1 }}>
-            This button has been clicked {count} times.
-          </Typography>
-          <Button onClick={() => setCount(count + 1)}>Count</Button>
+          <Button onClick={() => setCount(count + 1)}>Count is {count}</Button>
         </Box>
       </Paper>
     </Container>
