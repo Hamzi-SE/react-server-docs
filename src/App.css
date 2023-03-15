@@ -1,0 +1,12 @@
+/* Load Roboto font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+/* Apply Roboto font to all elements */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Apply monospace Roboto font to pre code elements */
+pre code {
+  font-family: 'Roboto Mono', monospace;
+}
