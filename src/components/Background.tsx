@@ -72,7 +72,7 @@ export const VantaBackground: FunctionComponent<
         instance.current.destroy();
       }
     },
-    []
+    [enabled, dark, light, type]
   );
 
   useEffect(() => {
