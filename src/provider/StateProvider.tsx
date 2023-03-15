@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, Dispatch, useReducer } from 'react';
 
 type State = {
   menuOpen: boolean;
@@ -11,7 +11,7 @@ const initialState: State = {
 
 export const stateContext = createContext({
   state: initialState,
-  dispatch: null,
+  dispatch: (() => {}) as Dispatch<any>,
 });
 
 export type Action = { type: string; value: any };
