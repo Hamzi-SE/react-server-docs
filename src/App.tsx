@@ -16,6 +16,7 @@ import {
   SunnyBlueClouds,
   VantaBackground,
 } from './components/Background';
+import { Layout } from './container/Layout';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
       <StateProvider>
         <ThemeProvider>
           <Router>
-            <Routes>{routes}</Routes>
+            <Layout />
           </Router>
         </ThemeProvider>
       </StateProvider>

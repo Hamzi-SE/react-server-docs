@@ -1,0 +1,12 @@
+.imageContainer {
+    flex-direction: column;
+    align-items: center;
+
+}
+
+@media (min-width: 768px) {
+    .imageContainer {
+        align-items: flex-start;
+        flex-direction: row;
+  }
+}

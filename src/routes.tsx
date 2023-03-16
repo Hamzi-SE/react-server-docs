@@ -1,4 +1,7 @@
 import { Route } from 'react-router';
-import { IndexPage } from './pages';
+import { StatesPage, IndexPage } from './pages';
 
-export const routes = [<Route path="/" Component={IndexPage} />];
+export const routes = [
+  <Route path="/" Component={IndexPage} />,
+  <Route path="/states" Component={StatesPage} />,
+];

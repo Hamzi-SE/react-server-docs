@@ -7,9 +7,10 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { stateContext } from '../provider/StateProvider';
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 
 export default function ButtonAppBar() {
-  const { dispatch } = React.useContext(stateContext);
+  const { state, dispatch } = React.useContext(stateContext);
   return (
     <AppBar>
       <Toolbar>
@@ -30,12 +31,12 @@ export default function ButtonAppBar() {
           </Typography>
         </Box>
         <Box sx={{ flexGrow: 1 }}></Box>
-        <Button
-          color="inherit"
+        <IconButton
+          color={state.animatedBackground ? 'secondary' : 'inherit'}
           onClick={() => dispatch({ type: 'TOGGLE_ANIMATED_BACKGROUND' })}
         >
-          Animate
-        </Button>
+          <AutoFixHighIcon />
+        </IconButton>
       </Toolbar>
     </AppBar>
   );
