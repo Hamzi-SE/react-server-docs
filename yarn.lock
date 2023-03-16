@@ -1241,9 +1241,9 @@
   dependencies:
     "@sinonjs/commons" "^2.0.0"
 
-"@state-less/react-client@state-less/react-client#feature/error-handling":
+"@state-less/react-client@state-less/react-client#feature/useComponent":
   version "2.0.1"
-  resolved "https://codeload.github.com/state-less/react-client/tar.gz/239f7cf0ce199e12947a287dd95502ada4d4bcbc"
+  resolved "https://codeload.github.com/state-less/react-client/tar.gz/e032ab6a59bd1dc7fc9b23186b8dceb10ebff96d"
   dependencies:
     "@apollo/client" "^3.7.10"
     "@babel/plugin-transform-react-jsx" "^7.21.0"

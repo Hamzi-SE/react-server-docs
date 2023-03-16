@@ -8,8 +8,30 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 
-export const Markdown = ({ children }) => {
+type MarkdownProps = {
+  children: string;
+  src?: string;
+};
+
+export const Markdown = ({ children, src }: MarkdownProps) => {
+  const cache = useRef({});
+  const [markdown, setMarkdown] = useState<string>(
+    cache[src || ''] || children || ''
+  );
+
+  useEffect(() => {
+    if (src && !cache[src]) {
+      fetch(src)
+        .then((response) => response.text())
+        .then((text) => {
+          cache.current[src] = text;
+          setMarkdown(text);
+        });
+    }
+  });
+
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
@@ -49,7 +71,7 @@ export const Markdown = ({ children }) => {
         },
       }}
     >
-      {children}
+      {src ? markdown : children}
     </ReactMarkdown>
   );
 };

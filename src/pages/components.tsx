@@ -18,9 +18,9 @@ import {
   getRawPath,
 } from '../components/CollabEditButton';
 
-const PAGE_SRC = 'src/pages/States.md';
+const PAGE_SRC = 'src/pages/Components.md';
 
-export const StatesPage = () => {
+export const ComponentsPage = () => {
   const [value, setValue, localInfo] = useServerState('Hello World', {
     key: 'hello-world',
     scope: 'global',
@@ -48,14 +48,14 @@ export const StatesPage = () => {
         >
           <Button>
             <ArrowBackIcon />
-            <Link component={RouterLink} to="/">
-              Home
+            <Link component={RouterLink} to="/states">
+              States
             </Link>
           </Button>
           <CollabEditButton to={getGHPath(PAGE_SRC)} />
           <Button>
-            <Link component={RouterLink} to="/components">
-              Components
+            <Link component={RouterLink} to="/playground">
+              Playground
             </Link>
             <ArrowForwardIcon />
           </Button>

@@ -12,15 +12,20 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import { Markdown } from '../components/Markdown';
+import { Server } from '../server-components/Server';
 import {
   CollabEditButton,
   getGHPath,
   getRawPath,
 } from '../components/CollabEditButton';
 
-const PAGE_SRC = 'src/pages/States.md';
+const PAGE_SRC = 'src/playground/Server.md';
 
-export const StatesPage = () => {
+export const PlaygroundPage = () => {
+  const props = useComponent('server', {
+    props: { bar: 'foo' },
+    client: localClient,
+  });
   const [value, setValue, localInfo] = useServerState('Hello World', {
     key: 'hello-world',
     scope: 'global',
@@ -38,6 +43,7 @@ export const StatesPage = () => {
   return (
     <Container maxWidth="lg">
       <Paper sx={{ marginTop: 9, marginBottom: 1, padding: 8 }}>
+        <Server />
         <Markdown src={getRawPath(PAGE_SRC)}>*Loading*</Markdown>
         <Box
           sx={{
@@ -48,16 +54,16 @@ export const StatesPage = () => {
         >
           <Button>
             <ArrowBackIcon />
-            <Link component={RouterLink} to="/">
-              Home
+            <Link component={RouterLink} to="/components">
+              Components
             </Link>
           </Button>
           <CollabEditButton to={getGHPath(PAGE_SRC)} />
           <Button>
-            <Link component={RouterLink} to="/components">
-              Components
+            <ArrowBackIcon />
+            <Link component={RouterLink} to="/">
+              Home
             </Link>
-            <ArrowForwardIcon />
           </Button>
         </Box>
       </Paper>

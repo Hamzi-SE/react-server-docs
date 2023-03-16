@@ -17,17 +17,21 @@ import {
   VantaBackground,
 } from './components/Background';
 import { Layout } from './container/Layout';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <div className="App">
-      <StateProvider>
-        <ThemeProvider>
-          <Router>
-            <Layout />
-          </Router>
-        </ThemeProvider>
-      </StateProvider>
+      <ApolloProvider client={client}>
+        <StateProvider>
+          <ThemeProvider>
+            <Router>
+              <ScrollToTop />
+              <Layout />
+            </Router>
+          </ThemeProvider>
+        </StateProvider>
+      </ApolloProvider>
     </div>
   );
 }
