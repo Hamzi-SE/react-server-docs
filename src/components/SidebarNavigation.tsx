@@ -26,7 +26,13 @@ export const SidebarNavigation = () => {
   );
 };
 
-const LinkItem = ({ to, children, sx }) => {
+type LinkItemProps = {
+  to: string;
+  children: React.ReactNode;
+  sx?: any;
+};
+
+const LinkItem = ({ to, children, sx }: LinkItemProps) => {
   const { pathname } = useLocation();
   return (
     <ListItem
