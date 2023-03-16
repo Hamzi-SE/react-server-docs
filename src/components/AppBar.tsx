@@ -12,7 +12,7 @@ import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 export default function ButtonAppBar() {
   const { state, dispatch } = React.useContext(stateContext);
   return (
-    <AppBar>
+    <AppBar sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar>
         <IconButton
           size="large"
@@ -20,6 +20,7 @@ export default function ButtonAppBar() {
           color="inherit"
           aria-label="menu"
           sx={{ mr: 2 }}
+          onClick={() => dispatch({ type: 'TOGGLE_MENU' })}
         >
           <MenuIcon />
         </IconButton>

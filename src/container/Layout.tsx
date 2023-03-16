@@ -31,6 +31,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { useLocation } from 'react-router-dom';
+import { SidebarNavigation } from '../components/SidebarNavigation';
 
 export const Layout = () => {
   const { state, dispatch } = useContext(stateContext);
@@ -50,6 +51,7 @@ export const Layout = () => {
           <ButtonAppBar />
         </header>
         <main>
+          <SidebarNavigation />
           <Routes>{routes}</Routes>
         </main>
         <footer>
