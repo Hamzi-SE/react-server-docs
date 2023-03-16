@@ -135,7 +135,7 @@ You can now manipulate the state from a graphql client.
         </Markdown>
         <Alert severity="info">
           Increase the count by clicking the button below. The count is stored
-          on the server.
+          on our server.
         </Alert>
         <Box sx={{ display: 'flex', justifyContent: 'center', paddingTop: 1 }}>
           <Button
@@ -169,3 +169,4 @@ You can now manipulate the state from a graphql client.
 };
 
 export * from './states';
+export { ComponentsPage } from './components';

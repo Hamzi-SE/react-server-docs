@@ -17,12 +17,12 @@ const statelessWs = new WebSocketLink({
 
 // Create an HTTP link
 const localHttp = new HttpLink({
-  uri: 'https://localhost:4000/graphql',
+  uri: 'http://localhost:4000/graphql',
 });
 
 // Create a WebSocket link
 const localWs = new WebSocketLink({
-  uri: `wss://localhost:4000/graphql`,
+  uri: `ws://localhost:4000/graphql`,
   options: {
     reconnect: true,
   },

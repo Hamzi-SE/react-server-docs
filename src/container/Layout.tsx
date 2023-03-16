@@ -30,16 +30,22 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { useLocation } from 'react-router-dom';
 
 export const Layout = () => {
   const { state, dispatch } = useContext(stateContext);
+  const { pathname } = useLocation();
+
   return (
     <VantaBackground
       light={SunnyBlueClouds}
       dark={DarkWaves}
       enabled={state.animatedBackground}
     >
-      <Box sx={{ maxHeight: '100vh', overflowY: 'auto', overflowX: 'hidden' }}>
+      <Box
+        key={pathname}
+        sx={{ maxHeight: '100vh', overflowY: 'auto', overflowX: 'hidden' }}
+      >
         <header>
           <ButtonAppBar />
         </header>
