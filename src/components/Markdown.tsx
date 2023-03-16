@@ -4,7 +4,6 @@ import remarkGfm from 'remark-gfm';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Link from '@mui/material/Link';
@@ -16,19 +15,18 @@ export const Markdown = ({ children }) => {
       remarkPlugins={[remarkGfm]}
       components={{
         a: (props) => {
-          console.log('LINK', props);
           return (
-            <Link to={props.href} component={RouterLink}>
+            <Link to={props.href || '/'} component={RouterLink}>
               {props.children}
             </Link>
           );
         },
-        table: (props) => {
+        table: (props: any) => {
           return (
             <Table>
               <TableHead>
                 <TableRow>
-                  {props.children[0].props.children[0].props.children.map(
+                  {props.children[0].props.children[0].props.children?.map(
                     (e) => {
                       return <TableCell>{e}</TableCell>;
                     }
