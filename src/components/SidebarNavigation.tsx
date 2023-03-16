@@ -11,13 +11,13 @@ export const SidebarNavigation = () => {
       <List sx={{ paddingTop: 8, minWidth: 256 }}>
         <LinkItem to="/">Home</LinkItem>
         <List disablePadding>
-          <LinkItem to="/states" level={1} sx={{ pl: 4 }}>
+          <LinkItem to="/states" sx={{ pl: 4 }}>
             States
           </LinkItem>
-          <LinkItem to="/components" level={1} sx={{ pl: 4 }}>
+          <LinkItem to="/components" sx={{ pl: 4 }}>
             Components
           </LinkItem>
-          <LinkItem to="/playground" level={1} sx={{ pl: 4 }}>
+          <LinkItem to="/playground" sx={{ pl: 4 }}>
             Playground
           </LinkItem>
         </List>
