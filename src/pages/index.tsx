@@ -11,6 +11,8 @@ import { Link as RouterLink } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Markdown } from '../components/Markdown';
 import styles from './index.module.css';
+import { NavigationButton2D } from '../components/NavigationButton';
+import { navigation } from '../global';
 
 export const IndexPage = () => {
   const [value, setValue, localInfo] = useServerState('Hello World', {
@@ -152,16 +154,8 @@ You can now manipulate the state from a graphql client.
           components and share them with the community. Please read the
           [docs](/docs) for more information.
         </Markdown>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Link component={RouterLink} to="/docs">
-            Docs
-          </Link>
-          <Button>
-            <Link component={RouterLink} to="/states">
-              States
-            </Link>
-            <ArrowForwardIcon />
-          </Button>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <NavigationButton2D next />
         </Box>
       </Paper>
     </Container>

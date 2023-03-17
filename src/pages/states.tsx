@@ -17,6 +17,7 @@ import {
   getGHPath,
   getRawPath,
 } from '../components/CollabEditButton';
+import { Navigation, NavigationButton2D } from '../components/NavigationButton';
 
 const PAGE_SRC = 'src/pages/States.md';
 
@@ -39,27 +40,7 @@ export const StatesPage = () => {
     <Container maxWidth="lg">
       <Paper sx={{ marginTop: 9, marginBottom: 1, padding: 8 }}>
         <Markdown src={getRawPath(PAGE_SRC)}>*Loading*</Markdown>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            marginTop: 2,
-          }}
-        >
-          <Button>
-            <ArrowBackIcon />
-            <Link component={RouterLink} to="/">
-              Home
-            </Link>
-          </Button>
-          <CollabEditButton to={getGHPath(PAGE_SRC)} />
-          <Button>
-            <Link component={RouterLink} to="/components">
-              Components
-            </Link>
-            <ArrowForwardIcon />
-          </Button>
-        </Box>
+        <Navigation />
       </Paper>
     </Container>
   );

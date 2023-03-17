@@ -18,6 +18,7 @@ import {
   getGHPath,
   getRawPath,
 } from '../components/CollabEditButton';
+import { Navigation } from '../components/NavigationButton';
 
 const PAGE_SRC = 'src/playground/Server.md';
 
@@ -45,27 +46,7 @@ export const PlaygroundPage = () => {
       <Paper sx={{ marginTop: 9, marginBottom: 1, padding: 8 }}>
         <Server />
         <Markdown src={getRawPath(PAGE_SRC)}>*Loading*</Markdown>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            marginTop: 2,
-          }}
-        >
-          <Button>
-            <ArrowBackIcon />
-            <Link component={RouterLink} to="/components">
-              Components
-            </Link>
-          </Button>
-          <CollabEditButton to={getGHPath(PAGE_SRC)} />
-          <Button>
-            <ArrowBackIcon />
-            <Link component={RouterLink} to="/">
-              Home
-            </Link>
-          </Button>
-        </Box>
+        <Navigation />
       </Paper>
     </Container>
   );
