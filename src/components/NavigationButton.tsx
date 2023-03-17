@@ -50,10 +50,10 @@ export const NavigationButton2D = ({
   return (
     <Link to={nextPath} component={RouterLink}>
       <Button>
-        {nextPath == '/' && <HomeIcon />}
-        {prev && nextPath !== '/' && <ArrowBackIcon />}
+        {nextPath == '/' && <HomeIcon sx={{ pr: 1 }} />}
+        {prev && nextPath !== '/' && <ArrowBackIcon sx={{ pr: 1 }} />}
         {children || nextPath == '/' ? 'Home' : pascalCase(nextPath.slice(1))}
-        {next && nextPath !== '/' && <ArrowForwardIcon />}
+        {next && nextPath !== '/' && <ArrowForwardIcon sx={{ pl: 1 }} />}
       </Button>
     </Link>
   );

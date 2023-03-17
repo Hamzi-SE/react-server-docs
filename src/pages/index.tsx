@@ -20,7 +20,7 @@ export const IndexPage = () => {
     scope: 'global',
     client: localClient,
   });
-
+  console.log('Localinfo', localInfo);
   const { loading, error } = localInfo || {
     error: new Error('Wrong react-client version.'),
   };
@@ -79,23 +79,7 @@ npx init state-less/react-server my-server
 cd .\my-server\
 npm start
 \`\`\`
-`}
-        </Markdown>
-        {loading && <Alert severity="warning">Connecting</Alert>}
-        {error && (
-          <>
-            <Alert severity="error">
-              {error?.message === 'Failed to fetch'
-                ? 'No server is reachable on https://localhost:4000.'
-                : error.message}
-            </Alert>
-            <Markdown>{`
-#### Uh oh. 
-It seems like you do not have a local server running. For the best experience, please start a local server.
-
-Make sure your chrome is set up to allow self signed certificates.
-[chrome://flags/#allow-insecure-localhost](chrome://flags/#allow-insecure-localhost)
-
+#### Troubleshooting. 
 In case the initializiation did not work you can manually set up a server. It's a little more work but it's worth it.
 \`\`\`
 git clone state-less/clean-starter -b react-server my-server
@@ -105,9 +89,8 @@ yarn install
 yarn start
 \`\`\`	
 *Hint: reload the page once your server is running.*
-        `}</Markdown>
-          </>
-        )}
+        `}
+        </Markdown>
         {!loading && !error && (
           <Alert severity="success">Server is running.</Alert>
         )}
