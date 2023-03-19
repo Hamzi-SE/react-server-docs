@@ -15,22 +15,23 @@ type MarkdownProps = {
   src?: string;
 };
 
+const cache = {};
 export const Markdown = ({ children, src }: MarkdownProps) => {
-  const cache = useRef({});
   const [markdown, setMarkdown] = useState<string>(
     cache[src || ''] || children || ''
   );
 
   useEffect(() => {
     if (src && !cache[src]) {
+      cache[src] = children;
       fetch(src)
         .then((response) => response.text())
         .then((text) => {
-          cache.current[src] = text;
+          cache[src] = text;
           setMarkdown(text);
         });
     }
-  });
+  }, []);
 
   return (
     <ReactMarkdown

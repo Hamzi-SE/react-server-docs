@@ -4,7 +4,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import HomeIcon from '@mui/icons-material/Home';
 import { useLocation } from 'react-router-dom';
-import { navigation } from '../global';
+import { navigation } from '../routes';
 import { pascalCase } from 'change-case';
 import { ReactNode } from 'react';
 import { CollabEditButton, getGHPath } from './CollabEditButton';
@@ -13,7 +13,7 @@ const pages = {
   '/': null,
   '/states': 'src/pages/States.md',
   '/components': 'src/pages/Components.md',
-  '/playground': 'src/playground/Server.md',
+  '/server': 'src/playground/Server.md',
 };
 export const Navigation = ({}) => {
   const { pathname } = useLocation();
@@ -52,7 +52,7 @@ export const NavigationButton2D = ({
       <Button>
         {nextPath == '/' && <HomeIcon sx={{ pr: 1 }} />}
         {prev && nextPath !== '/' && <ArrowBackIcon sx={{ pr: 1 }} />}
-        {children || nextPath == '/' ? 'Home' : pascalCase(nextPath.slice(1))}
+        {children || nextPath == '/' ? 'Home' : nextPath}
         {next && nextPath !== '/' && <ArrowForwardIcon sx={{ pl: 1 }} />}
       </Button>
     </Link>

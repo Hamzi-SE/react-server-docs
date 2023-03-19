@@ -23,24 +23,6 @@ import { Navigation } from '../components/NavigationButton';
 const PAGE_SRC = 'src/playground/Server.md';
 
 export const PlaygroundPage = () => {
-  const props = useComponent('server', {
-    props: { bar: 'foo' },
-    client: localClient,
-  });
-  const [value, setValue, localInfo] = useServerState('Hello World', {
-    key: 'hello-world',
-    scope: 'global',
-    client: localClient,
-  });
-  const { loading, error } = localInfo || {};
-  console.log('info', localInfo);
-  const [count, setCount] = useServerState(0, {
-    key: 'count',
-    scope: 'global',
-    client,
-  });
-
-  const { state } = useContext(stateContext);
   return (
     <Container maxWidth="lg">
       <Paper sx={{ marginTop: 9, marginBottom: 1, padding: 8 }}>
