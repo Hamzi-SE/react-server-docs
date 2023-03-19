@@ -1,6 +1,6 @@
 import './App.css';
 
-import client from './lib/client';
+import client, { localClient } from './lib/client';
 
 import { StateProvider } from './provider/StateProvider';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -14,7 +14,9 @@ import ScrollToTop from './components/ScrollToTop';
 function App() {
   return (
     <div className="App">
-      <ApolloProvider client={client}>
+      <ApolloProvider
+        client={process.env.NODE_ENV === 'production' ? client : localClient}
+      >
         <StateProvider>
           <ThemeProvider>
             <Router>

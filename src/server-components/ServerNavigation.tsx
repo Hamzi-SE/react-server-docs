@@ -7,6 +7,7 @@ import {
   TextField,
   Alert,
   Button,
+  LinearProgress
 } from '@mui/material';
 import { useComponent } from '@state-less/react-client/dist/index';
 import { useState } from 'react';
@@ -16,7 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 /** This should check if the path contains a / and also that it doesn't contain any special characters */
 const isValidPath = (path: string) => {
-  return /^\/[0-9A-Za-z_-]+$/.test(path);
+  return /^\/([0-9A-Za-z_\-][\/]?)*$/.test(path);
 };
 
 const errors = (messages) => {
@@ -39,6 +40,7 @@ export const ServerNavigation = () => {
   const pathMessage = errors(errs);
   return (
     <div>
+      {loading && <LinearProgress />}
       {error && <Alert severity="error">{error.message}</Alert>}
       <TextField
         label="Title"
