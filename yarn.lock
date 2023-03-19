@@ -1220,14 +1220,13 @@
   dependencies:
     "@sinonjs/commons" "^2.0.0"
 
-"@state-less/react-client@state-less/react-client#feature/useComponent":
+"@state-less/react-client@state-less/react-client#feature/useComponent", "@state-less/react-client@state-less/react-client#feature/useComponent2":
   version "2.0.1"
-  resolved "https://codeload.github.com/state-less/react-client/tar.gz/61c22544f4ed6e56b9273ad475c216ddafda3240"
+  resolved "https://codeload.github.com/state-less/react-client/tar.gz/5d3b6d4ae917c2e0a8f30e936a034a1943592df5"
   dependencies:
     "@apollo/client" "^3.7.10"
     "@babel/plugin-transform-react-jsx" "^7.21.0"
     "@babel/preset-react" "^7.18.6"
-    "@testing-library/jest-dom" "^5.16.5"
     "@types/graphql" "^14.5.0"
     apollo-server "^3.12.0"
     apollo-server-express "^3.12.0"
@@ -1241,10 +1240,7 @@
     graphql-subscriptions "^2.0.0"
     graphql-tools "^8.3.18"
     jest "^29.4.3"
-    jest-environment-jsdom "^29.5.0"
     prettier "^2.8.4"
-    react "^18.2.0"
-    react-dom "^18.2.0"
     subscriptions-transport-ws "^0.11.0"
     uuid "^9.0.0"
 
