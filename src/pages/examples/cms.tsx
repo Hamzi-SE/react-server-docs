@@ -13,6 +13,7 @@ import { HelloWorldExample1 } from '../../server-components/examples';
 import { ServerNavigation } from '../../server-components/ServerNavigation';
 
 const CMS_SRC = 'src/examples/cms.md';
+const FOOTER_SRC = 'src/examples/cms/footer.md';
 
 export const CMSPage = () => {
   return (
@@ -20,6 +21,7 @@ export const CMSPage = () => {
       <Paper sx={{ marginTop: 9, marginBottom: 1, padding: 8 }}>
         <Markdown src={getRawPath(CMS_SRC)}>*Loading*</Markdown>
         <ServerNavigation />
+        <Markdown src={getRawPath(FOOTER_SRC)}>*Loading*</Markdown>
         <Navigation />
       </Paper>
     </Container>

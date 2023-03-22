@@ -7,7 +7,7 @@ import {
   TextField,
   Alert,
   Button,
-  LinearProgress
+  LinearProgress,
 } from '@mui/material';
 import { useComponent } from '@state-less/react-client/dist/index';
 import { useState } from 'react';
@@ -16,11 +16,11 @@ import { localClient } from '../lib/client';
 import CloseIcon from '@mui/icons-material/Close';
 
 /** This should check if the path contains a / and also that it doesn't contain any special characters */
-const isValidPath = (path: string) => {
+export const isValidPath = (path: string) => {
   return /^\/([0-9A-Za-z_\-][\/]?)*$/.test(path);
 };
 
-const errors = (messages) => {
+export const errors = (messages) => {
   return messages
     .filter(([, isErr]) => isErr)
     .map(([msg]) => msg)
