@@ -10,6 +10,10 @@ import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 
+import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+
 type MarkdownProps = {
   children: string;
   src?: string;
@@ -32,6 +36,14 @@ export const Markdown = ({ children, src }: MarkdownProps) => {
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       components={{
+        pre: (props) => {
+          console.log('PROPS', props);
+          return (
+            <SyntaxHighlighter language={props.lang} style={a11yDark}>
+              {props.children[0].props.children}
+            </SyntaxHighlighter>
+          );
+        },
         a: (props) => {
           return (
             <Link to={props.href || '/'} component={RouterLink}>

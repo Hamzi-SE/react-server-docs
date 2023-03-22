@@ -1,4 +1,4 @@
-import { Paper, Container } from '@mui/material';
+import { Paper, Container, Alert } from '@mui/material';
 
 import { Markdown } from '../../components/Markdown';
 import { getRawPath } from '../../components/CollabEditButton';
@@ -8,19 +8,21 @@ import {
   ServerPages,
 } from '../../server-components/ServerPages';
 
-const EXAMPLE_SRC_1 = 'src/examples/errors.md';
-const EXAMPLE_SRC_2 = 'src/examples/lifecycle.md';
+const PAGES_SRC = 'src/examples/cms/pages.md';
 
 export const PagesPage = () => {
   return (
     <Container maxWidth="lg">
       <Paper sx={{ marginTop: 9, marginBottom: 1, padding: 8 }}>
-        ASD
+        <Markdown src={PAGES_SRC}>Loading...</Markdown>
         <ServerPages />
         <Markdown>
           You can now consume the pages rendered by the server in your client.
           You only need to implement the routing.
         </Markdown>
+        <Alert severity="info">
+          Create a new page under /test and you will see it show up here.
+        </Alert>
         <ServerPageContainer path={'/test'} />
         <Navigation />
       </Paper>
