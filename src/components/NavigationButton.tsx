@@ -46,7 +46,9 @@ export const NavigationButton2D = ({
   const index = navigation.indexOf(pathname);
 
   const nextPath =
-    navigation[next ? (index + 1) % navigation.length : Math.max(0, index - 1)];
+    navigation[
+      next ? (index + 1) % navigation.length : Math.max(0, index - 1)
+    ][0];
   return (
     <Link to={nextPath} component={RouterLink}>
       <Button>

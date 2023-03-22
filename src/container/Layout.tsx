@@ -30,6 +30,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import { useLocation } from 'react-router-dom';
 import { SidebarNavigation } from '../components/SidebarNavigation';
 
@@ -128,6 +129,27 @@ export const Layout = () => {
                               to="mailto:moritz.roessler@gmail.com"
                             >
                               moritz.roessler@gmail.com
+                            </Link>
+                          </ListItemText>
+                        </ListItem>
+                      </List>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4} xl={2}>
+                <Card sx={{ marginTop: 1 }} elevation={0}>
+                  <CardHeader title="More"></CardHeader>
+                  <CardContent>
+                    <div className={styles.impressum}>
+                      <List disablePadding>
+                        <ListItem dense>
+                          <ListItemIcon>
+                            <QuestionMarkIcon />
+                          </ListItemIcon>
+                          <ListItemText>
+                            <Link component={RouterLink} to="/faq">
+                              FAQ
                             </Link>
                           </ListItemText>
                         </ListItem>
