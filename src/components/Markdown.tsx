@@ -15,19 +15,14 @@ type MarkdownProps = {
   src?: string;
 };
 
-const cache = {};
 export const Markdown = ({ children, src }: MarkdownProps) => {
-  const [markdown, setMarkdown] = useState<string>(
-    cache[src || ''] || children || ''
-  );
+  const [markdown, setMarkdown] = useState<string>(children || '');
 
   useEffect(() => {
-    if (src && !cache[src]) {
-      cache[src] = children;
+    if (src) {
       fetch(src)
         .then((response) => response.text())
         .then((text) => {
-          cache[src] = text;
           setMarkdown(text);
         });
     }
