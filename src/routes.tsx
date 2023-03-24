@@ -4,6 +4,7 @@ import { FunctionsPage } from './pages/examples';
 import { CMSPage } from './pages/examples/cms';
 import { PagesPage } from './pages/examples/pages';
 import { FAQPage } from './pages/faq';
+import { GithubPage } from './pages/GithubPage';
 import { PlaygroundPage } from './pages/playground';
 import { StoresPage } from './pages/stores';
 
@@ -17,11 +18,18 @@ export const navigation = [
   ['/examples/cms', 'CMS (Navigation)'],
   ['/examples/cms/pages', 'CMS (Pages)'],
   ['/faq', 'FAQ'],
+  ['/collaborating', 'Collaborate'],
 ];
 
 export const routes = [
   <Route path="/" Component={IndexPage} />,
   <Route path="/faq" Component={FAQPage} />,
+  <Route
+    path="/collaborating"
+    Component={() => {
+      return <GithubPage src="src/pages/Collaborating.md" />;
+    }}
+  />,
   <Route path="/states" Component={StatesPage} />,
   <Route path="/components" Component={ComponentsPage} />,
   <Route path="/stores" Component={StoresPage} />,

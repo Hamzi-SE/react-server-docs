@@ -9,21 +9,26 @@ const initialState: State = {
   animatedBackground: false,
 };
 
+export enum Actions {
+  TOGGLE_MENU,
+  TOGGLE_ANIMATED_BACKGROUND,
+}
+
 export const stateContext = createContext({
   state: initialState,
   dispatch: (() => {}) as Dispatch<any>,
 });
 
-export type Action = { type: string; value: any };
+export type Action = { type: Actions; value: any };
 
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
-    case 'TOGGLE_MENU':
+    case Actions.TOGGLE_MENU:
       return {
         ...state,
         menuOpen: !state.menuOpen,
       };
-    case 'TOGGLE_ANIMATED_BACKGROUND':
+    case Actions.TOGGLE_ANIMATED_BACKGROUND:
       return {
         ...state,
         animatedBackground: !state.animatedBackground,

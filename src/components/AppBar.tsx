@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { stateContext } from '../provider/StateProvider';
+import { Actions, stateContext } from '../provider/StateProvider';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ export default function ButtonAppBar() {
           color="inherit"
           aria-label="menu"
           sx={{ mr: 2 }}
-          onClick={() => dispatch({ type: 'TOGGLE_MENU' })}
+          onClick={() => dispatch({ type: Actions.TOGGLE_MENU })}
         >
           <MenuIcon />
         </IconButton>
@@ -37,7 +37,7 @@ export default function ButtonAppBar() {
         <Box sx={{ flexGrow: 1 }}></Box>
         <IconButton
           color={state.animatedBackground ? 'secondary' : 'inherit'}
-          onClick={() => dispatch({ type: 'TOGGLE_ANIMATED_BACKGROUND' })}
+          onClick={() => dispatch({ type: Actions.TOGGLE_ANIMATED_BACKGROUND })}
         >
           <AutoFixHighIcon />
         </IconButton>
