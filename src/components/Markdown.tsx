@@ -7,6 +7,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
 import { Link as RouterLink } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 
@@ -49,6 +50,18 @@ export const Markdown = ({ children, src }: MarkdownProps) => {
             <Link to={props.href || '/'} component={RouterLink}>
               {props.children}
             </Link>
+          );
+        },
+        blockquote: (args) => {
+          return (
+            <Box
+              sx={{
+                borderLeft: '4px solid',
+                borderColor: 'primary.main',
+              }}
+            >
+              <blockquote {...args} />
+            </Box>
           );
         },
         table: (props: any) => {
