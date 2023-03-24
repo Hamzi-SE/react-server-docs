@@ -37,10 +37,14 @@ export const Markdown = ({ children, src }: MarkdownProps) => {
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       components={{
-        pre: (props) => {
-          console.log('PROPS', props);
+        pre: (props: any) => {
           return (
-            <SyntaxHighlighter language={props.lang} style={a11yDark}>
+            <SyntaxHighlighter
+              language={
+                (props.children[0]?.props?.className || '-bash').split('-')[1]
+              }
+              style={a11yDark}
+            >
               {props.children[0].props.children}
             </SyntaxHighlighter>
           );
