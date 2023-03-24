@@ -2,6 +2,7 @@ import { Route } from 'react-router';
 import { StatesPage, IndexPage, ComponentsPage } from './pages';
 import { FunctionsPage } from './pages/examples';
 import { CMSPage } from './pages/examples/cms';
+import { NavigationPage } from './pages/examples/cms/routing';
 import { PagesPage } from './pages/examples/pages';
 import { FAQPage } from './pages/faq';
 import { GithubPage } from './pages/GithubPage';
@@ -17,6 +18,7 @@ export const navigation = [
   ['/examples', 'Examples'],
   ['/examples/cms', 'CMS (Navigation)'],
   ['/examples/cms/pages', 'CMS (Pages)'],
+  ['/examples/cms/rendering', 'CMS (Rendering)'],
   ['/faq', 'FAQ'],
   ['/collaborating', 'Collaborate'],
 ];
@@ -37,4 +39,5 @@ export const routes = [
   <Route path="/examples" Component={FunctionsPage} />,
   <Route path="/examples/cms" Component={CMSPage} />,
   <Route path="/examples/cms/pages" Component={PagesPage} />,
+  <Route path="/examples/cms/rendering" Component={NavigationPage} />,
 ];

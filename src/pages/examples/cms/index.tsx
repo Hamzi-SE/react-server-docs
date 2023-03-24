@@ -1,18 +1,18 @@
 import { Paper, Container } from '@mui/material';
 
 import { useServerState, useComponent } from '@state-less/react-client';
-import client, { localClient } from '../../lib/client';
+import client, { localClient } from '../../../lib/client';
 import { useContext } from 'react';
-import { stateContext } from '../../provider/StateProvider';
+import { stateContext } from '../../../provider/StateProvider';
 
-import { Markdown } from '../../components/Markdown';
-import { Server } from '../../server-components/Server';
-import { getRawPath } from '../../components/CollabEditButton';
-import { Navigation } from '../../components/NavigationButton';
-import { HelloWorldExample1 } from '../../server-components/examples';
-import { ServerNavigation } from '../../server-components/ServerNavigation';
+import { Markdown } from '../../../components/Markdown';
+import { Server } from '../../../server-components/Server';
+import { getRawPath } from '../../../components/CollabEditButton';
+import { Navigation } from '../../../components/NavigationButton';
+import { HelloWorldExample1 } from '../../../server-components/examples';
+import { ServerNavigation } from '../../../server-components/ServerNavigation';
 
-const CMS_SRC = 'src/examples/cms.md';
+const CMS_SRC = 'src/examples/cms/index.md';
 const FOOTER_SRC = 'src/examples/cms/footer.md';
 
 export const CMSPage = () => {
