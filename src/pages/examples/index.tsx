@@ -13,9 +13,11 @@ import {
   HelloWorldExample1,
   HelloWorldExample2,
 } from '../../server-components/examples';
+import { TodoApp } from '../../server-components/examples/TodoApp';
 
 const EXAMPLE_SRC_1 = 'src/examples/errors.md';
 const EXAMPLE_SRC_2 = 'src/examples/lifecycle.md';
+const EXAMPLE_SRC_3 = 'src/examples/todo.md';
 
 export const FunctionsPage = () => {
   return (
@@ -25,6 +27,8 @@ export const FunctionsPage = () => {
         <HelloWorldExample1 />
         <Markdown src={getRawPath(EXAMPLE_SRC_2)}>*Loading*</Markdown>
         <HelloWorldExample2 />
+        <Markdown src={getRawPath(EXAMPLE_SRC_3)}>*Loading*</Markdown>
+        <TodoApp />
         <Navigation />
       </Paper>
     </Container>
