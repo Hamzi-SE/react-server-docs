@@ -9,7 +9,11 @@ import {
   CardContent,
   Card,
   Alert,
+  Paper,
+  Box,
+  IconButton,
 } from '@mui/material';
+import ReplayIcon from '@mui/icons-material/Replay';
 import { useState } from 'react';
 import { errors, isValidPath } from './ServerNavigation';
 export const ServerPages = () => {
@@ -68,13 +72,19 @@ export const ServerPages = () => {
 };
 
 export const ServerPageContainer = ({ path }) => {
-  const [component, { loading, error }] = useComponent('page', {
+  const [component, { loading, error, refetch }] = useComponent('page', {
     props: { path },
   });
 
   if (loading) return <div>Loading...</div>;
 
-  return <ServerPage {...component.props} />;
+  return (
+    <>
+      <Paper square sx={{ minHeight: '25vh', width: '100%', padding: 2 }}>
+        {component?.props?.content}
+      </Paper>
+    </>
+  );
 };
 
 const ServerPage = ({ path, content }) => {
