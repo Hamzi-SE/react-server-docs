@@ -31,6 +31,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import GroupsIcon from '@mui/icons-material/Group';
 import { useLocation } from 'react-router-dom';
 import { SidebarNavigation } from '../components/SidebarNavigation';
 
@@ -150,6 +151,16 @@ export const Layout = () => {
                           <ListItemText>
                             <Link component={RouterLink} to="/faq">
                               FAQ
+                            </Link>
+                          </ListItemText>
+                        </ListItem>
+                        <ListItem dense>
+                          <ListItemIcon>
+                            <GroupsIcon />
+                          </ListItemIcon>
+                          <ListItemText>
+                            <Link component={RouterLink} to="/collaborating">
+                              Collaborate
                             </Link>
                           </ListItemText>
                         </ListItem>

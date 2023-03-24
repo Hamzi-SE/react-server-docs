@@ -1,14 +1,17 @@
 import { Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { useContext } from 'react';
-import { stateContext } from '../provider/StateProvider';
+import { Actions, stateContext } from '../provider/StateProvider';
 import { Link as RouterLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { navigation } from '../routes';
 
 export const SidebarNavigation = () => {
-  const { state } = useContext(stateContext);
+  const { state, dispatch } = useContext(stateContext);
   return (
-    <Drawer open={state.menuOpen}>
+    <Drawer
+      open={state.menuOpen}
+      onClose={() => dispatch({ type: Actions.TOGGLE_MENU })}
+    >
       <List sx={{ paddingTop: 8, minWidth: 256 }}>
         <List disablePadding>
           {navigation.map((e) => {
@@ -17,7 +20,10 @@ export const SidebarNavigation = () => {
                 to={e[0]}
                 sx={{
                   pl:
-                    1 + (e[0] === '/' ? 0 : (e[0].match(/\//g)?.length || 0 - 2) * 2),
+                    1 +
+                    (e[0] === '/'
+                      ? 0
+                      : (e[0].match(/\//g)?.length || 0 - 2) * 2),
                 }}
               >
                 {e[1]}
