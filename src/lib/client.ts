@@ -15,6 +15,25 @@ const statelessWs = new WebSocketLink({
   },
 });
 
+// Use the split function to direct traffic between the two links
+const stateless = split(
+  ({ query }) => {
+    const definition = getMainDefinition(query);
+    return (
+      definition.kind === 'OperationDefinition' &&
+      definition.operation === 'subscription'
+    );
+  },
+  statelessWs,
+  statelessHttp
+);
+
+// Create the Apollo Client instance
+const client = new ApolloClient({
+  link: stateless,
+  cache: new InMemoryCache(),
+});
+
 // Create an HTTP link
 const localHttp = new HttpLink({
   uri: 'http://localhost:4000/graphql',
@@ -29,19 +48,6 @@ const localWs = new WebSocketLink({
 });
 
 // Use the split function to direct traffic between the two links
-const stateless = split(
-  ({ query }) => {
-    const definition = getMainDefinition(query);
-    return (
-      definition.kind === 'OperationDefinition' &&
-      definition.operation === 'subscription'
-    );
-  },
-  statelessWs,
-  statelessHttp
-);
-
-// Use the split function to direct traffic between the two links
 const local = split(
   ({ query }) => {
     const definition = getMainDefinition(query);
@@ -53,12 +59,6 @@ const local = split(
   localWs,
   localHttp
 );
-
-// Create the Apollo Client instance
-const client = new ApolloClient({
-  link: stateless,
-  cache: new InMemoryCache(),
-});
 
 // Create the Apollo Client instance
 export const localClient = new ApolloClient({
