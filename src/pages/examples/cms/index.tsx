@@ -18,7 +18,7 @@ const FOOTER_SRC = 'src/examples/cms/footer.md';
 export const CMSPage = () => {
   return (
     <Container maxWidth="lg">
-      <Paper sx={{ marginTop: 9, marginBottom: 1, padding: 8 }}>
+      <Paper sx={{ mt: 1, marginBottom: 1, padding: 8 }}>
         <Markdown src={getRawPath(CMS_SRC)}>*Loading*</Markdown>
         <ServerNavigation />
         <Markdown src={getRawPath(FOOTER_SRC)}>*Loading*</Markdown>

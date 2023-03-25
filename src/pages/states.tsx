@@ -9,7 +9,7 @@ const PAGE_SRC = 'src/pages/States.md';
 export const StatesPage = () => {
   return (
     <Container maxWidth="lg">
-      <Paper sx={{ marginTop: 9, marginBottom: 1, padding: 8 }}>
+      <Paper sx={{ mt: 1, marginBottom: 1, padding: 8 }}>
         <Markdown src={getRawPath(PAGE_SRC)}>*Loading*</Markdown>
         <Navigation />
       </Paper>

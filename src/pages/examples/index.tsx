@@ -22,7 +22,7 @@ const EXAMPLE_SRC_3 = 'src/examples/todo.md';
 export const FunctionsPage = () => {
   return (
     <Container maxWidth="lg">
-      <Paper sx={{ marginTop: 9, marginBottom: 1, padding: 8 }}>
+      <Paper sx={{ mt: 1, marginBottom: 1, padding: 8 }}>
         <Markdown src={getRawPath(EXAMPLE_SRC_1)}>*Loading*</Markdown>
         <HelloWorldExample1 />
         <Markdown src={getRawPath(EXAMPLE_SRC_2)}>*Loading*</Markdown>

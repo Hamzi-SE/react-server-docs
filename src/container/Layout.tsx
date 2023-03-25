@@ -17,7 +17,7 @@ import {
   CardContent,
   Grid,
   CardHeader,
-  Button,
+  Alert,
   List,
   ListItem,
   ListItemIcon,
@@ -59,6 +59,11 @@ export const Layout = () => {
         </header>
         <main>
           <SidebarNavigation />
+          <Alert severity="info" sx={{ mt: 8 }}>
+            Notice: This is a pre-alpha version and a work in progress. Features
+            and documentation may not be fully complete. Please use with
+            caution.
+          </Alert>
           <Routes>{routes}</Routes>
         </main>
         <footer>

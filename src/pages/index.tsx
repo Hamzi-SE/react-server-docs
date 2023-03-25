@@ -34,7 +34,7 @@ export const IndexPage = () => {
   const { state } = useContext(stateContext);
   return (
     <Container maxWidth="lg">
-      <Paper sx={{ marginTop: 9, marginBottom: 1, padding: 8 }}>
+      <Paper sx={{ mt: 1, marginBottom: 1, padding: 8 }}>
         <Box
           className={styles.imageContainer}
           sx={{ display: 'flex', justifyContent: 'space-between', gap: 4 }}

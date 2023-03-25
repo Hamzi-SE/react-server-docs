@@ -15,7 +15,7 @@ export const PagesPage = () => {
   const [pages] = useComponent('pages', {});
   return (
     <Container maxWidth="lg">
-      <Paper sx={{ marginTop: 9, marginBottom: 1, padding: 8 }}>
+      <Paper sx={{ mt: 1, marginBottom: 1, padding: 8 }}>
         <Markdown src={getRawPath(PAGES_SRC)}>Loading...</Markdown>
         <ServerPages />
         <Markdown>
