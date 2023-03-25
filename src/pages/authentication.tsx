@@ -9,8 +9,18 @@ const PAGE_SRC = 'src/pages/Authentication.md';
 
 export const AuthPage = () => {
   return (
-    <Container maxWidth="lg">
-      <Paper sx={{ mt: 1, marginBottom: 1, padding: 8 }}>
+    <Container maxWidth="lg" disableGutters>
+      <Paper
+        sx={{
+          mt: 1,
+          marginBottom: 1,
+          padding: {
+            xs: 1,
+            sm: 4,
+            md: 8,
+          },
+        }}
+      >
         <Markdown src={getRawPath(PAGE_SRC)}>*Loading*</Markdown>
         <ServerSession />
         <Navigation />

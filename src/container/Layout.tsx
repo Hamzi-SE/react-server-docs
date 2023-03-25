@@ -67,7 +67,17 @@ export const Layout = () => {
           <Routes>{routes}</Routes>
         </main>
         <footer>
-          <Paper square sx={{ padding: 2, mt: 9 }}>
+          <Paper
+            square
+            sx={{
+              padding: {
+                xs: 0,
+                sm: 1,
+                md: 2,
+              },
+              mt: 9,
+            }}
+          >
             <Typography variant="body2" color="textSecondary" align="center">
               © 2023 React Server
             </Typography>
