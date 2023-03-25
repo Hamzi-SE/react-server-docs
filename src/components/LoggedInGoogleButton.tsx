@@ -1,13 +1,17 @@
 import { Avatar, Button } from '@mui/material';
 import { authContext } from '@state-less/react-client';
 import { useContext } from 'react';
-import GoogleLogin from 'react-google-login';
+import GoogleLogin, { GoogleLoginResponse } from 'react-google-login';
 import GoogleIcon from '@mui/icons-material/Google';
+import { GoogleOAuthToken } from '../lib/types';
 
 const logError = (response) => {
   console.log(response);
 };
 
+const isGoogleLoginResponse = (val: any): val is GoogleLoginResponse => {
+  return val?.tokenId !== undefined && val.accessToken !== undefined;
+};
 export const LoggedInGoogleButton = (props) => {
   const { session, authenticate } = useContext(authContext);
 
@@ -36,8 +40,12 @@ export const GoogleLoginButton = () => {
     <GoogleLogin
       clientId="534678949355-odq15l4236372p864f63ci14g794sfqf.apps.googleusercontent.com"
       buttonText="Login"
-      onSuccess={({ accessToken, tokenId }) => {
-        console.log('Authenticating with google');
+      onSuccess={(response) => {
+        if (!isGoogleLoginResponse(response)) {
+          console.log('Offline?', response);
+          return;
+        }
+        const { tokenId, accessToken } = response;
         authenticate({
           strategy: 'google',
           data: { accessToken, idToken: tokenId },
