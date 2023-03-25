@@ -9,15 +9,9 @@ import { pascalCase } from 'change-case';
 import { ReactNode } from 'react';
 import { CollabEditButton, getGHPath } from './CollabEditButton';
 
-const pages = {
-  '/': null,
-  '/states': 'src/pages/States.md',
-  '/components': 'src/pages/Components.md',
-  '/server': 'src/playground/Server.md',
-};
 export const Navigation = ({}) => {
   const { pathname } = useLocation();
-
+  const ghSrc = navigation.find((n) => n[0] === pathname)?.[2] || null;
   return (
     <Box
       sx={{
@@ -27,7 +21,7 @@ export const Navigation = ({}) => {
       }}
     >
       <NavigationButton2D prev />
-      <CollabEditButton to={getGHPath(pages[pathname])} />
+      {ghSrc && <CollabEditButton to={getGHPath(ghSrc)} />}
       <NavigationButton2D next />
     </Box>
   );

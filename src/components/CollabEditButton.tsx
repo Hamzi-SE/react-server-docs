@@ -1,5 +1,6 @@
 import { Link as RouterLink } from 'react-router-dom';
 import { Button, Link } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 
 export const getRawPath = (path: string) => {
   return `https://raw.githubusercontent.com/state-less/react-server-docs-md/master/${path}`;
@@ -11,10 +12,11 @@ export const getGHPath = (path: string) => {
 
 export const CollabEditButton = ({ to }: { to: string }) => {
   return (
-    <Button>
-      <Link component={RouterLink} to={to}>
+    <Link component={RouterLink} to={to}>
+      <Button>
+        <EditIcon sx={{ pr: 1 }} />
         Edit this page
-      </Link>
-    </Button>
+      </Button>
+    </Link>
   );
 };

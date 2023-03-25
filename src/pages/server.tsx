@@ -22,7 +22,7 @@ import { Navigation } from '../components/NavigationButton';
 
 const PAGE_SRC = 'src/playground/Server.md';
 
-export const PlaygroundPage = () => {
+export const ServerPage = () => {
   return (
     <Container maxWidth="lg">
       <Paper sx={{ marginTop: 9, marginBottom: 1, padding: 8 }}>
