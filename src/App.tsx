@@ -10,6 +10,7 @@ import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from './provider/ThemeProvider';
 import { Layout } from './container/Layout';
 import ScrollToTop from './components/ScrollToTop';
+import { AuthProvider } from '@state-less/react-client';
 
 function App() {
   return (
@@ -17,14 +18,16 @@ function App() {
       <ApolloProvider
         client={process.env.NODE_ENV === 'production' ? client : localClient}
       >
-        <StateProvider>
-          <ThemeProvider>
-            <Router>
-              <ScrollToTop />
-              <Layout />
-            </Router>
-          </ThemeProvider>
-        </StateProvider>
+        <AuthProvider>
+          <StateProvider>
+            <ThemeProvider>
+              <Router>
+                <ScrollToTop />
+                <Layout />
+              </Router>
+            </ThemeProvider>
+          </StateProvider>
+        </AuthProvider>
       </ApolloProvider>
     </div>
   );
