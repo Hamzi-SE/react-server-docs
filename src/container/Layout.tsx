@@ -34,12 +34,13 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import GroupsIcon from '@mui/icons-material/Group';
 import { useLocation } from 'react-router-dom';
 import { SidebarNavigation } from '../components/SidebarNavigation';
+declare let gtag: Function;
 
 export const Layout = () => {
   const { state, dispatch } = useContext(stateContext);
   const { pathname } = useLocation();
   useEffect(() => {
-    window.gtag('event', 'load', { event_category: 'page' });
+    gtag('event', 'load', { event_category: 'page' });
   }, [pathname]);
   return (
     <VantaBackground
