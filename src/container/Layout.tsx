@@ -7,7 +7,7 @@ import {
 } from '../components/Background';
 import { stateContext } from '../provider/StateProvider';
 import { routes } from '../routes';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import {
   Paper,
   Typography,
@@ -38,7 +38,9 @@ import { SidebarNavigation } from '../components/SidebarNavigation';
 export const Layout = () => {
   const { state, dispatch } = useContext(stateContext);
   const { pathname } = useLocation();
-
+  useEffect(() => {
+    window.gtag('event', 'load', { event_category: 'page' });
+  }, [pathname]);
   return (
     <VantaBackground
       light={SunnyBlueClouds}
