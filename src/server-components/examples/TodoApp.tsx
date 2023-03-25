@@ -58,7 +58,7 @@ export const TodoApp = (props) => {
         {component?.children.map((todo, i) => (
           <TodoItem
             key={i}
-            todo={todo.key}
+            todo={todo}
             edit={edit}
             remove={component?.props?.remove}
           />
@@ -70,9 +70,9 @@ export const TodoApp = (props) => {
 
 const TodoItem = (props) => {
   const { todo, edit, remove } = props;
-  const [component, { loading }] = useComponent(todo, {});
 
-  if (loading) return null;
+  // Hydarate the call with the data from the parent component
+  const [component, { loading }] = useComponent(todo.key, { data: todo });
 
   return (
     <ListItem>
