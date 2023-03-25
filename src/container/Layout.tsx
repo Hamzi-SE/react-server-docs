@@ -105,8 +105,24 @@ export const Layout = () => {
                             <ChatIcon />
                           </ListItemIcon>
                           <ListItemText>
-                            <Link component={RouterLink} to="/collaborating">
+                            <Link
+                              component={RouterLink}
+                              to="https://discord.gg/MJuVT4kE"
+                            >
                               Discord
+                            </Link>
+                          </ListItemText>
+                        </ListItem>
+                        <ListItem dense>
+                          <ListItemIcon>
+                            <ChatIcon />
+                          </ListItemIcon>
+                          <ListItemText>
+                            <Link
+                              component={RouterLink}
+                              to="ircs://chat.freenode.net/react-server"
+                            >
+                              IRC (Freenode): #react-server
                             </Link>
                           </ListItemText>
                         </ListItem>
