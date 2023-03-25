@@ -3,7 +3,7 @@ import { authContext } from '@state-less/react-client';
 import { useContext } from 'react';
 import GoogleLogin, { GoogleLoginResponse } from 'react-google-login';
 import GoogleIcon from '@mui/icons-material/Google';
-import { GoogleOAuthToken } from '../lib/types';
+import { GOOGLE_ID } from '../config';
 
 const logError = (response) => {
   console.log(response);
@@ -38,7 +38,7 @@ export const GoogleLoginButton = () => {
     <LoggedInGoogleButton />
   ) : (
     <GoogleLogin
-      clientId="534678949355-odq15l4236372p864f63ci14g794sfqf.apps.googleusercontent.com"
+      clientId={GOOGLE_ID}
       buttonText="Login"
       onSuccess={(response) => {
         if (!isGoogleLoginResponse(response)) {
