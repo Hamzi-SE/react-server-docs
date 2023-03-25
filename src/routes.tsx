@@ -17,6 +17,7 @@ export const navigation = [
   ['/stores', 'Stores', 'src/pages/Stores.md'],
   ['/server', 'Server', 'src/playground/Server.md'],
   ['/authentication', 'Authentication', 'src/pages/Authentication.md'],
+  ['/SSR', 'SSR', 'src/examples/SSR.md'],
   ['/examples', 'Examples', 'src/examples'],
   ['/examples/cms', 'CMS (Navigation)', 'src/examples/cms'],
   ['/examples/cms/pages', 'CMS (Pages)', 'src/examples/cms/pages.md'],
@@ -43,6 +44,12 @@ export const routes = [
     path="/additional-topics"
     Component={() => {
       return <GithubPage src="src/pages/Additional.md" />;
+    }}
+  />,
+  <Route
+    path="/SSR"
+    Component={() => {
+      return <GithubPage src="src/examples/SSR.md" />;
     }}
   />,
   <Route path="/states" Component={StatesPage} />,
