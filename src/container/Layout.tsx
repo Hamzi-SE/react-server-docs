@@ -34,6 +34,8 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import GroupsIcon from '@mui/icons-material/Group';
 import { useLocation } from 'react-router-dom';
 import { SidebarNavigation } from '../components/SidebarNavigation';
+import ChatIcon from '@mui/icons-material/Chat';
+
 declare let gtag: Function;
 
 export const Layout = () => {
@@ -95,6 +97,16 @@ export const Layout = () => {
                               to="https://twitter.com/statelesscloud"
                             >
                               @statelesscloud
+                            </Link>
+                          </ListItemText>
+                        </ListItem>
+                        <ListItem dense>
+                          <ListItemIcon>
+                            <ChatIcon />
+                          </ListItemIcon>
+                          <ListItemText>
+                            <Link component={RouterLink} to="/collaborating">
+                              Discord
                             </Link>
                           </ListItemText>
                         </ListItem>
