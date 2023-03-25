@@ -1,5 +1,6 @@
 import { Route } from 'react-router';
 import { StatesPage, IndexPage, ComponentsPage } from './pages';
+import { AuthPage } from './pages/authentication';
 import { FunctionsPage } from './pages/examples';
 import { CMSPage } from './pages/examples/cms';
 import { NavigationPage } from './pages/examples/cms/routing';
@@ -15,6 +16,7 @@ export const navigation = [
   ['/components', 'Components'],
   ['/stores', 'Stores'],
   ['/server', 'Server'],
+  ['/authentication', 'Authentication'],
   ['/examples', 'Examples'],
   ['/examples/cms', 'CMS (Navigation)'],
   ['/examples/cms/pages', 'CMS (Pages)'],
@@ -36,6 +38,7 @@ export const routes = [
   <Route path="/components" Component={ComponentsPage} />,
   <Route path="/stores" Component={StoresPage} />,
   <Route path="/server" Component={PlaygroundPage} />,
+  <Route path="/authentication" Component={AuthPage} />,
   <Route path="/examples" Component={FunctionsPage} />,
   <Route path="/examples/cms" Component={CMSPage} />,
   <Route path="/examples/cms/pages" Component={PagesPage} />,

@@ -10,9 +10,17 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Actions, stateContext } from '../provider/StateProvider';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import { Link as RouterLink } from 'react-router-dom';
+import GoogleLogin from 'react-google-login';
+import { authContext } from '@state-less/react-client';
+import { GoogleLoginButton, LoggedInGoogleButton } from './LoggedInGoogleButton';
+
+const responseGoogle = (response) => {
+  console.log(response);
+};
 
 export default function ButtonAppBar() {
   const { state, dispatch } = React.useContext(stateContext);
+  const { authenticate, session } = React.useContext(authContext);
   return (
     <AppBar sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar>
@@ -41,6 +49,7 @@ export default function ButtonAppBar() {
         >
           <AutoFixHighIcon />
         </IconButton>
+        <GoogleLoginButton />
       </Toolbar>
     </AppBar>
   );
