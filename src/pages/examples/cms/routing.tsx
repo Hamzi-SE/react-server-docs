@@ -2,6 +2,7 @@ import { Paper, Container, Alert } from '@mui/material';
 import { useRef } from 'react';
 import { getRawPath } from '../../../components/CollabEditButton';
 import { Markdown } from '../../../components/Markdown';
+import { Navigation } from '../../../components/NavigationButton';
 import { DynamicPageExample } from '../../../server-components/examples/Routing';
 
 const EXAMPLE_SRC_1 = 'src/examples/cms/rendering.md';
@@ -18,6 +19,7 @@ export const NavigationPage = () => {
         </Alert>
         <DynamicPageExample />
         <Markdown src={getRawPath(EXAMPLE_SRC_2)}>*Loading*</Markdown>
+        <Navigation />
       </Paper>
     </Container>
   );
