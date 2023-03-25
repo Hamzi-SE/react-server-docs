@@ -8,7 +8,7 @@ export const GithubPage = ({ src }: { src: string }) => {
     <Container maxWidth="lg">
       <Paper sx={{ mt: 1, marginBottom: 1, padding: 8 }}>
         <Markdown src={getRawPath(src)}>*Loading*</Markdown>
-        <Navigation src={getGHPath(src)} />
+        <Navigation />
       </Paper>
     </Container>
   );
