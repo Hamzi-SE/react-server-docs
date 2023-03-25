@@ -8,7 +8,7 @@ import { FAQPage } from './pages/faq';
 import { GithubPage } from './pages/GithubPage';
 import { PlaygroundPage } from './pages/playground';
 import { StoresPage } from './pages/stores';
-
+import Analytics from 'react-router-ga';
 export const navigation = [
   ['/', 'Home'],
   ['/states', 'States'],

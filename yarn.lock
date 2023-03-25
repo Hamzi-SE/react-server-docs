@@ -1222,7 +1222,7 @@
 
 "@state-less/react-client@state-less/react-client#feature/clientContext":
   version "2.0.1"
-  resolved "https://codeload.github.com/state-less/react-client/tar.gz/5612684c459ee832ce25cdaaf0343025e3fe943c"
+  resolved "https://codeload.github.com/state-less/react-client/tar.gz/d4ce8761f85210337d65efd54dcf0166235a42fe"
   dependencies:
     "@apollo/client" "^3.7.10"
     "@babel/plugin-transform-react-jsx" "^7.21.0"
@@ -5164,6 +5164,11 @@ react-router-dom@^6.9.0:
   dependencies:
     "@remix-run/router" "1.4.0"
     react-router "6.9.0"
+
+react-router-ga@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-router-ga/-/react-router-ga-1.2.3.tgz#3011b63554e65f50dd16df3dbcdf4ed286b74e73"
+  integrity sha512-0rNBGGI6Q1hkznbLB+bAmDTS+8w3duaJYYIbCrCwof/p7RbZuv+Lsv9enumRZXxb4oTZrY95vOvFxnsRQ4cFCg==
 
 react-router@6.9.0, react-router@^6.9.0:
   version "6.9.0"

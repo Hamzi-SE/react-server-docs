@@ -29,7 +29,6 @@ export const IndexPage = () => {
   const [count, setCount] = useServerState(0, {
     key: 'count',
     scope: 'global',
-    client,
   });
 
   const { state } = useContext(stateContext);

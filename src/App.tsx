@@ -12,6 +12,7 @@ import { Layout } from './container/Layout';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
+  console.log('ENV', process.env.NODE_ENV, localClient);
   return (
     <div className="App">
       <ApolloProvider
