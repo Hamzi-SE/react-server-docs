@@ -14,9 +14,7 @@ import GoogleLogin from 'react-google-login';
 import { authContext } from '@state-less/react-client';
 import { GoogleLoginButton, LoggedInGoogleButton } from './LoggedInGoogleButton';
 
-const responseGoogle = (response) => {
-  console.log(response);
-};
+
 
 export default function ButtonAppBar() {
   const { state, dispatch } = React.useContext(stateContext);

@@ -95,7 +95,7 @@ export const Layout = () => {
                           <ListItemText>
                             <Link
                               component={RouterLink}
-                              to="https://github.com/state-less"
+                              to="https://github.com/state-less/react-server"
                             >
                               Github
                             </Link>
