@@ -122,7 +122,7 @@ export const Layout = () => {
                           <ListItemText>
                             <Link
                               component={RouterLink}
-                              to="https://discord.gg/MJuVT4kE"
+                              to="https://discord.gg/vbEhvfKPFY"
                             >
                               Discord
                             </Link>

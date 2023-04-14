@@ -9,6 +9,8 @@ import { FAQPage } from './pages/faq';
 import { GithubPage } from './pages/GithubPage';
 import { ServerPage } from './pages/server';
 import { StoresPage } from './pages/stores';
+import { Poll } from './server-components/examples/Polls';
+import { TodoApp } from './server-components/examples/TodoApp';
 
 export const navigation = [
   ['/', 'Home'],
@@ -61,4 +63,12 @@ export const routes = [
   <Route path="/examples/cms" Component={CMSPage} />,
   <Route path="/examples/cms/pages" Component={PagesPage} />,
   <Route path="/examples/cms/rendering" Component={NavigationPage} />,
+  <Route
+    path="/debug"
+    Component={() => (
+      <div>
+        <Poll />
+      </div>
+    )}
+  />,
 ];
