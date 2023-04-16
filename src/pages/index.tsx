@@ -84,8 +84,8 @@ export const IndexPage = () => {
           ´
           <Markdown>
             This is just the beginning. You can now start to build your own
-            components and share them with the community. Please read the
-            [docs](/docs) for more information.
+            [components](/components) and share them with the community. Please
+            read the docs for more information.
           </Markdown>
           <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
             <NavigationButton2D next />
