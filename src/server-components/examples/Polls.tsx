@@ -11,8 +11,8 @@ import {
 import { useComponent } from '@state-less/react-client';
 import HeartIcon from '@mui/icons-material/Favorite';
 
-export const Poll = () => {
-  const [component, { error, loading }] = useComponent('poll', {});
+export const Poll = ({ id = 'poll' }) => {
+  const [component, { error, loading }] = useComponent(id, {});
   const sum = component?.props?.votes.reduce((a, b) => a + b, 0);
   return (
     <Card>

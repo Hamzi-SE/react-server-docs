@@ -1,4 +1,4 @@
-import { Paper, Container, CardActions, Link } from '@mui/material';
+import { Paper, Container, CardActions, Link, Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
 
 import { Alert, Button, Box } from '@mui/material';
@@ -14,6 +14,7 @@ import styles from './index.module.css';
 import { NavigationButton2D } from '../components/NavigationButton';
 import { navigation } from '../global';
 import { getGHPath, getRawPath } from '../components/CollabEditButton';
+import { Poll } from '../server-components/examples/Polls';
 
 export const IndexPage = () => {
   const [value, setValue, localInfo] = useServerState('Hello World', {
@@ -33,52 +34,65 @@ export const IndexPage = () => {
 
   const { state } = useContext(stateContext);
   return (
-    <Container maxWidth="lg" disableGutters>
-      <Paper sx={{ mt: 1, marginBottom: 1, padding: {
-        xs: 1,
-        sm: 4,
-        md: 8,
-      } }}>
-        <Box
-          className={styles.imageContainer}
-          sx={{ display: 'flex', justifyContent: 'space-between', gap: 4 }}
+    <Grid container spacing={1}>
+      <Grid item xs={3} sx={{ mt: 1 }}>
+        <Poll id="poll-open" />
+      </Grid>
+      <Grid item xs={6}>
+        <Paper
+          sx={{
+            mt: 1,
+            marginBottom: 1,
+            padding: {
+              xs: 1,
+              sm: 4,
+              md: 8,
+            },
+          }}
         >
-          <img
-            src="/react-server.png"
-            alt="React Server"
-            style={{ width: 256, height: 256 }}
-          />
-          <div>
-            <Markdown src={getRawPath('src/pages/index/introduction.md')}>
-              Loading...
-            </Markdown>
-          </div>
-        </Box>
-        <Markdown src={getRawPath('src/pages/index.md')}>Loading...</Markdown>
-        <Alert severity="info">
-          Increase the count by clicking the button below. The count is stored
-          on our server.
-        </Alert>
-        <Box sx={{ display: 'flex', justifyContent: 'center', paddingTop: 1 }}>
-          <Button
-            color="secondary"
-            variant="contained"
-            onClick={() => setCount(count + 1)}
+          <Box
+            className={styles.imageContainer}
+            sx={{ display: 'flex', justifyContent: 'space-between', gap: 4 }}
           >
-            Count is {count}
-          </Button>
-        </Box>
-        ´
-        <Markdown>
-          This is just the beginning. You can now start to build your own
-          components and share them with the community. Please read the
-          [docs](/docs) for more information.
-        </Markdown>
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <NavigationButton2D next />
-        </Box>
-      </Paper>
-    </Container>
+            <img
+              src="/react-server.png"
+              alt="React Server"
+              style={{ width: 256, height: 256 }}
+            />
+            <div>
+              <Markdown src={getRawPath('src/pages/index/introduction.md')}>
+                Loading...
+              </Markdown>
+            </div>
+          </Box>
+          <Markdown src={getRawPath('src/pages/index.md')}>Loading...</Markdown>
+          <Alert severity="info">
+            Increase the count by clicking the button below. The count is stored
+            on our server.
+          </Alert>
+          <Box
+            sx={{ display: 'flex', justifyContent: 'center', paddingTop: 1 }}
+          >
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={() => setCount(count + 1)}
+            >
+              Count is {count}
+            </Button>
+          </Box>
+          ´
+          <Markdown>
+            This is just the beginning. You can now start to build your own
+            components and share them with the community. Please read the
+            [docs](/docs) for more information.
+          </Markdown>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <NavigationButton2D next />
+          </Box>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 
