@@ -5,7 +5,7 @@ import {
   SunnyBlueClouds,
   VantaBackground,
 } from '../components/Background';
-import { stateContext } from '../provider/StateProvider';
+import { Actions, stateContext } from '../provider/StateProvider';
 import { routes } from '../routes';
 import { useContext, useEffect } from 'react';
 import {
@@ -35,6 +35,7 @@ import GroupsIcon from '@mui/icons-material/Group';
 import { useLocation } from 'react-router-dom';
 import { SidebarNavigation } from '../components/SidebarNavigation';
 import ChatIcon from '@mui/icons-material/Chat';
+import Snackbar from '@mui/material/Snackbar';
 
 declare let gtag: Function;
 
@@ -64,6 +65,16 @@ export const Layout = () => {
             and documentation may not be fully complete. Please use with
             caution.
           </Alert>
+          {state.messages.map((message) => {
+            return (
+              <Snackbar
+                open={true}
+                autoHideDuration={6000}
+                onClose={() => dispatch({ type: Actions.HIDE_MESSAGE })}
+                message={message}
+              />
+            );
+          })}
           <Routes>{routes}</Routes>
         </main>
         <footer>

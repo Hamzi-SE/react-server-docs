@@ -14,7 +14,6 @@ import { AuthProvider } from '@state-less/react-client';
 import { useEffect } from 'react';
 
 function App() {
-
   return (
     <div className="App">
       <ApolloProvider

@@ -3,15 +3,19 @@ import React, { createContext, Dispatch, useReducer } from 'react';
 type State = {
   menuOpen: boolean;
   animatedBackground: boolean;
+  messages: string[];
 };
 const initialState: State = {
   menuOpen: false,
   animatedBackground: false,
+  messages: [],
 };
 
 export enum Actions {
   TOGGLE_MENU,
   TOGGLE_ANIMATED_BACKGROUND,
+  SHOW_MESSAGE,
+  HIDE_MESSAGE,
 }
 
 export const stateContext = createContext({
@@ -32,6 +36,16 @@ const reducer = (state: State, action: Action) => {
       return {
         ...state,
         animatedBackground: !state.animatedBackground,
+      };
+    case Actions.SHOW_MESSAGE:
+      return {
+        ...state,
+        messages: [...state.messages, action.value],
+      };
+    case Actions.HIDE_MESSAGE:
+      return {
+        ...state,
+        messages: state.messages.slice(1),
       };
   }
   return state;

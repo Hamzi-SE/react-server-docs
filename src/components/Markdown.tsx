@@ -9,11 +9,15 @@ import TableRow from '@mui/material/TableRow';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import { Link as RouterLink } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { IconButton } from '@mui/material';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import copy from 'copy-to-clipboard';
+import { Actions, stateContext } from '../provider/StateProvider';
 
 type MarkdownProps = {
   children: string;
@@ -22,6 +26,7 @@ type MarkdownProps = {
 
 export const Markdown = ({ children, src }: MarkdownProps) => {
   const [markdown, setMarkdown] = useState<string>(children || '');
+  const { state, dispatch } = useContext(stateContext);
 
   useEffect(() => {
     if (src) {
@@ -39,14 +44,30 @@ export const Markdown = ({ children, src }: MarkdownProps) => {
       components={{
         pre: (props: any) => {
           return (
-            <SyntaxHighlighter
-              language={
-                (props.children[0]?.props?.className || '-bash').split('-')[1]
-              }
-              style={a11yDark}
-            >
-              {props.children[0].props.children}
-            </SyntaxHighlighter>
+            <>
+              <Box sx={{ width: '100%', display: 'flex' }}>
+                <IconButton
+                  sx={{ ml: 'auto', mb: -7, color: 'white' }}
+                  onClick={() => {
+                    copy(props.children[0].props.children);
+                    dispatch({
+                      type: Actions.SHOW_MESSAGE,
+                      value: 'Copied to clipboard',
+                    });
+                  }}
+                >
+                  <ContentCopyIcon />
+                </IconButton>
+              </Box>
+              <SyntaxHighlighter
+                language={
+                  (props.children[0]?.props?.className || '-bash').split('-')[1]
+                }
+                style={a11yDark}
+              >
+                {props.children[0].props.children}
+              </SyntaxHighlighter>
+            </>
           );
         },
         a: (props) => {
