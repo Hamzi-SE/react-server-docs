@@ -135,9 +135,9 @@ export const Layout = () => {
                           <ListItemText>
                             <Link
                               component={RouterLink}
-                              to="ircs://chat.freenode.net/react-server"
+                              to="ircs://irc.eu.libera.chat/react-server"
                             >
-                              IRC (Freenode): #react-server
+                              IRC (Libera): #react-server
                             </Link>
                           </ListItemText>
                         </ListItem>
