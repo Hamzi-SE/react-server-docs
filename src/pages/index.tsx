@@ -15,6 +15,7 @@ import { NavigationButton2D } from '../components/NavigationButton';
 import { navigation } from '../global';
 import { getGHPath, getRawPath } from '../components/CollabEditButton';
 import { Poll } from '../server-components/examples/Polls';
+import { Comments } from '../server-components/examples/Comments';
 
 export const IndexPage = () => {
   const [value, setValue, localInfo] = useServerState('Hello World', {
@@ -37,6 +38,7 @@ export const IndexPage = () => {
     <Grid container spacing={1}>
       <Grid item xs={12} md={4} xl={3} sx={{ mt: 1 }}>
         <Poll id="poll-open" />
+        <Comments />
       </Grid>
       <Grid item xs={12} md={8} xl={6}>
         <Paper
