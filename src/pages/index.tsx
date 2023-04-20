@@ -38,10 +38,10 @@ export const IndexPage = () => {
     <Grid container spacing={1}>
       <Grid item xs={12} md={4} xl={3} sx={{ mt: 1 }}>
         <Grid container spacing={1}>
-          <Grid item>
+          <Grid item xs={12}>
             <Poll id="poll-open" />
           </Grid>
-          <Grid item>
+          <Grid item xs={12}>
             <Comments />
           </Grid>
         </Grid>
