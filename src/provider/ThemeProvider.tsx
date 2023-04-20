@@ -31,11 +31,11 @@ const CustomCheckbox = styled(Checkbox)(({ theme }) => ({
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#F66528',
+      main: '#0B4F69', //'#FDD804',
     },
     secondary: {
-        main: '#FDD804',
-    }
+      main: '#1DC5E1', //'#F66528',
+    },
   },
 });
 
