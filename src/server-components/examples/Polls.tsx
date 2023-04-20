@@ -22,7 +22,7 @@ export const Poll = ({ id = 'poll' }) => {
         {component?.props?.values?.map((value, i) => {
           const percentage = (100 / sum) * component?.props?.votes[i];
           return (
-            <ListItem>
+            <ListItem dense disablePadding>
               <Box
                 sx={{
                   ml: -2,
