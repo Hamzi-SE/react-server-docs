@@ -1,42 +1,34 @@
 import {
   Alert,
   Avatar,
-  Box,
   Button,
   Card,
   CardActions,
   CardContent,
-  CardHeader,
   Chip,
   IconButton,
-  List,
-  ListItem,
-  ListItemSecondaryAction,
-  ListItemText,
   TextField,
   Tooltip,
   Typography,
 } from '@mui/material';
 import { authContext, useComponent } from '@state-less/react-client';
-import HeartIcon from '@mui/icons-material/Favorite';
 import { useContext, useState } from 'react';
 import GoogleIcon from '@mui/icons-material/Google';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export const Comments = ({ id = 'comments' }) => {
-  const { session, authenticate } = useContext(authContext);
   const [component, { error, loading }] = useComponent(id, {});
   const [comment, setComment] = useState('');
   const comments = component?.props?.comments || [];
 
-  const canComment = session?.id;
+  const canComment = component?.props?.permissions.comment;
   const canDelete = component?.props?.permissions.delete;
 
   return (
     <Card>
       {loading && <Alert severity="info">Loading...</Alert>}
       {error && <Alert severity="error">{error.message}</Alert>}
-      {!session?.id && (
+      {!canComment && (
         <Alert severity="info">You need to be logged in to comment.</Alert>
       )}
 
@@ -84,6 +76,11 @@ const StrategyIcons = {
   google: GoogleIcon,
 };
 const Comment = ({ comment, del, canDelete }) => {
+  const { session } = useContext(authContext);
+  const isOwnComment =
+    comment.identity.email === session?.strategies?.[session.strategy]?.email ||
+    (comment.identity.strategy === 'anonymous' &&
+      comment.identity.id === JSON.parse(localStorage.id));
   const Icon = StrategyIcons[comment.strategy];
   return (
     <Card sx={{ m: 1 }}>
@@ -91,16 +88,18 @@ const Comment = ({ comment, del, canDelete }) => {
         <Typography variant="body1">{comment.message}</Typography>
       </CardContent>
       <CardActions>
-        {canDelete && (
+        {(canDelete || isOwnComment) && (
           <IconButton onClick={del}>
             <DeleteIcon />
           </IconButton>
         )}
         <Chip
           avatar={
-            <Avatar src={comment.identity.picture}>
-              <Icon />
-            </Avatar>
+            comment.identity.picture && (
+              <Avatar src={comment.identity.picture}>
+                <Icon />
+              </Avatar>
+            )
           }
           label={comment.identity.name}
           sx={{ ml: 'auto' }}

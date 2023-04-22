@@ -11,6 +11,7 @@ import { ServerPage } from './pages/server';
 import { StoresPage } from './pages/stores';
 import { Poll } from './server-components/examples/Polls';
 import { TodoApp } from './server-components/examples/TodoApp';
+import { CommentsPage } from './pages/examples/comments';
 
 export const navigation = [
   ['/', 'Home'],
@@ -21,6 +22,7 @@ export const navigation = [
   ['/authentication', 'Authentication', 'src/pages/Authentication.md'],
   ['/SSR', 'SSR', 'src/examples/SSR.md'],
   ['/examples', 'Examples', 'src/examples'],
+  ['/examples/comments', 'Comments', 'src/examples/comments.md'],
   ['/examples/cms', 'CMS (Navigation)', 'src/examples/cms'],
   ['/examples/cms/pages', 'CMS (Pages)', 'src/examples/cms/pages.md'],
   [
@@ -60,6 +62,7 @@ export const routes = [
   <Route path="/server" Component={ServerPage} />,
   <Route path="/authentication" Component={AuthPage} />,
   <Route path="/examples" Component={FunctionsPage} />,
+  <Route path="/examples/comments" Component={CommentsPage} />,
   <Route path="/examples/cms" Component={CMSPage} />,
   <Route path="/examples/cms/pages" Component={PagesPage} />,
   <Route path="/examples/cms/rendering" Component={NavigationPage} />,
