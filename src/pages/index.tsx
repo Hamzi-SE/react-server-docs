@@ -39,7 +39,32 @@ export const IndexPage = () => {
       <Grid item xs={12} md={4} xl={3} sx={{ mt: 1, p: 1 }}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <Poll id="poll-open" />
+            <Poll
+              id="poll-open"
+              message={({ voted }) => {
+                if (voted === 0) {
+                  return (
+                    <Alert severity="success">
+                      Thank you for your feedback!
+                    </Alert>
+                  );
+                }
+                if (voted === 1) {
+                  return (
+                    <Alert severity="info">
+                      Please consider leaving some feedback on what to improve.
+                    </Alert>
+                  );
+                }
+                if (voted === 2) {
+                  return (
+                    <Alert severity="info">
+                      Please consider opening an issue on Github. This will help us a lot.
+                    </Alert>
+                  );
+                }
+              }}
+            />
           </Grid>
           <Grid item xs={12}>
             <Comments />

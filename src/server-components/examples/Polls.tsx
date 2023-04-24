@@ -11,7 +11,7 @@ import {
 import { useComponent } from '@state-less/react-client';
 import HeartIcon from '@mui/icons-material/Favorite';
 
-export const Poll = ({ id = 'poll' }) => {
+export const Poll = ({ id = 'poll', message }) => {
   const [component, { error, loading }] = useComponent(id, {});
   const sum = component?.props?.votes.reduce((a, b) => a + b, 0);
   return (
@@ -19,6 +19,7 @@ export const Poll = ({ id = 'poll' }) => {
       {id}
       {loading && <Alert severity="info">Loading...</Alert>}
       {error && <Alert severity="error">{error.message}</Alert>}
+      {message && message?.(component?.props || {})}
       <List>
         {component?.props?.values?.map((value, i) => {
           const percentage = (100 / sum) * component?.props?.votes[i];
