@@ -6,13 +6,14 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { GOOGLE_ID } from '../config';
 import { stateContext } from '../provider/StateProvider';
 
-const logError = (response) => {};
+const logError = () => {};
 
 const isGoogleLoginResponse = (val: any): val is GoogleLoginResponse => {
   return val?.tokenId !== undefined && val.accessToken !== undefined;
 };
-export const LoggedInGoogleButton = (props) => {
-  const { session, authenticate } = useContext(authContext);
+export const LoggedInGoogleButton = () => {
+  const { session } = useContext(authContext);
+  const { state } = useContext(stateContext);
 
   if (session.strategy !== 'google') {
     return null;
@@ -20,7 +21,7 @@ export const LoggedInGoogleButton = (props) => {
 
   const decoded = session.strategies.google.decoded;
   return (
-    <Button color="secondary">
+    <Button color={state.animatedBackground ? 'primary' : 'info'}>
       <Avatar
         src={decoded.picture}
         sx={{ width: 24, height: 24, mr: 1 }}
@@ -32,7 +33,7 @@ export const LoggedInGoogleButton = (props) => {
 
 export const GoogleLoginButton = () => {
   const { session, authenticate } = useContext(authContext);
-  const { state, dispatch } = useContext(stateContext);
+  const { state } = useContext(stateContext);
 
   return session?.strategy === 'google' ? (
     <LoggedInGoogleButton />
@@ -54,7 +55,7 @@ export const GoogleLoginButton = () => {
       render={(props) => {
         return (
           <Button
-            color={state.animatedBackground ? 'primary' : 'secondary'}
+            color={state.animatedBackground ? 'primary' : 'info'}
             {...props}
           >
             <GoogleIcon sx={{ mr: 1 }} />
