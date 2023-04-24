@@ -36,6 +36,7 @@ import { useLocation } from 'react-router-dom';
 import { SidebarNavigation } from '../components/SidebarNavigation';
 import ChatIcon from '@mui/icons-material/Chat';
 import Snackbar from '@mui/material/Snackbar';
+import HeartIcon from '@mui/icons-material/Favorite';
 
 declare let gtag: Function;
 
@@ -218,6 +219,19 @@ export const Layout = () => {
                           <ListItemText>
                             <Link component={RouterLink} to="/collaborating">
                               Collaborate
+                            </Link>
+                          </ListItemText>
+                        </ListItem>
+                        <ListItem dense>
+                          <ListItemIcon>
+                            <HeartIcon />
+                          </ListItemIcon>
+                          <ListItemText>
+                            <Link
+                              component={RouterLink}
+                              to="https://github.com/sponsors/state-less"
+                            >
+                              Sponsor
                             </Link>
                           </ListItemText>
                         </ListItem>
