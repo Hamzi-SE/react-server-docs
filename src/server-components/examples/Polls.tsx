@@ -10,8 +10,15 @@ import {
 } from '@mui/material';
 import { useComponent } from '@state-less/react-client';
 import HeartIcon from '@mui/icons-material/Favorite';
+import { ReactNode } from 'react';
 
-export const Poll = ({ id = 'poll', message }) => {
+export const Poll = ({
+  id = 'poll',
+  message,
+}: {
+  id?: string;
+  message?: (props: Record<string, any>) => ReactNode;
+}) => {
   const [component, { error, loading }] = useComponent(id, {});
   const sum = component?.props?.votes.reduce((a, b) => a + b, 0);
   return (
