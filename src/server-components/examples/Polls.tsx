@@ -42,13 +42,17 @@ export const Poll = ({
                 }}
               />
               <ListItemText
-                sx={{ zIndex: 0}}
+                sx={{ zIndex: 0 }}
                 primary={value}
                 secondary={component?.props?.votes[i]}
               />
               <ListItemSecondaryAction>
                 <IconButton
                   onClick={() => component?.props?.vote(i)}
+                  disabled={
+                    component?.props?.voted > -1 &&
+                    component?.props?.voted !== i
+                  }
                   color={component.props.voted === i ? 'primary' : 'default'}
                 >
                   <HeartIcon />
