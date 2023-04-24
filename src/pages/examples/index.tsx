@@ -24,11 +24,17 @@ const EXAMPLE_SRC_4 = 'src/examples/poll.md';
 export const FunctionsPage = () => {
   return (
     <Container maxWidth="lg" disableGutters>
-      <Paper sx={{ mt: 1, marginBottom: 1, padding: {
-        xs: 1,
-        sm: 4,
-        md: 8,
-      } }}>
+      <Paper
+        sx={{
+          mt: 1,
+          marginBottom: 1,
+          padding: {
+            xs: 1,
+            sm: 4,
+            md: 8,
+          },
+        }}
+      >
         <Markdown># TLDR;</Markdown>
         <Markdown>## Errors</Markdown>
         <HelloWorldExample1 />

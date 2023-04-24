@@ -5,9 +5,7 @@ import GoogleLogin, { GoogleLoginResponse } from 'react-google-login';
 import GoogleIcon from '@mui/icons-material/Google';
 import { GOOGLE_ID } from '../config';
 
-const logError = (response) => {
-  console.log(response);
-};
+const logError = (response) => {};
 
 const isGoogleLoginResponse = (val: any): val is GoogleLoginResponse => {
   return val?.tokenId !== undefined && val.accessToken !== undefined;

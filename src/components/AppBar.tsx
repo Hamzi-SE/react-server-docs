@@ -11,14 +11,20 @@ import { Actions, stateContext } from '../provider/StateProvider';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import { Link as RouterLink } from 'react-router-dom';
 import GoogleLogin from 'react-google-login';
-import { authContext } from '@state-less/react-client';
-import { GoogleLoginButton, LoggedInGoogleButton } from './LoggedInGoogleButton';
-
-
+import { authContext, useServerState } from '@state-less/react-client';
+import {
+  GoogleLoginButton,
+  LoggedInGoogleButton,
+} from './LoggedInGoogleButton';
+import SensorsIcon from '@mui/icons-material/Sensors';
 
 export default function ButtonAppBar() {
   const { state, dispatch } = React.useContext(stateContext);
   const { authenticate, session } = React.useContext(authContext);
+  const [connections] = useServerState(0, {
+    key: 'connections',
+    scope: 'global',
+  });
   return (
     <AppBar sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar>
@@ -41,6 +47,8 @@ export default function ButtonAppBar() {
           </Link>
         </Box>
         <Box sx={{ flexGrow: 1 }}></Box>
+        <SensorsIcon></SensorsIcon>
+        {connections}
         <IconButton
           color={state.animatedBackground ? 'secondary' : 'inherit'}
           onClick={() => dispatch({ type: Actions.TOGGLE_ANIMATED_BACKGROUND })}
