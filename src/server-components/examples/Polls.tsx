@@ -16,6 +16,7 @@ export const Poll = ({ id = 'poll' }) => {
   const sum = component?.props?.votes.reduce((a, b) => a + b, 0);
   return (
     <Card>
+      {id}
       {loading && <Alert severity="info">Loading...</Alert>}
       {error && <Alert severity="error">{error.message}</Alert>}
       <List>

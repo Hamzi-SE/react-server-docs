@@ -12,9 +12,11 @@ import { StoresPage } from './pages/stores';
 import { Poll } from './server-components/examples/Polls';
 import { TodoApp } from './server-components/examples/TodoApp';
 import { CommentsPage } from './pages/examples/comments';
+import { InstallationPage } from './pages/installation';
 
 export const navigation = [
   ['/', 'Home'],
+  ['/installation', 'Installation'],
   ['/states', 'States', 'src/pages/States.md'],
   ['/components', 'Components', 'src/pages/Components.md'],
   ['/stores', 'Stores', 'src/pages/Stores.md'],
@@ -37,6 +39,7 @@ export const navigation = [
 
 export const routes = [
   <Route path="/" Component={IndexPage} />,
+  <Route path="/installation" Component={InstallationPage} />,
   <Route path="/faq" Component={FAQPage} />,
   <Route
     path="/collaborating"
