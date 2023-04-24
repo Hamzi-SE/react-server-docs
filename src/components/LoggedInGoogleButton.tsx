@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import GoogleLogin, { GoogleLoginResponse } from 'react-google-login';
 import GoogleIcon from '@mui/icons-material/Google';
 import { GOOGLE_ID } from '../config';
+import { stateContext } from '../provider/StateProvider';
 
 const logError = (response) => {};
 
@@ -31,6 +32,7 @@ export const LoggedInGoogleButton = (props) => {
 
 export const GoogleLoginButton = () => {
   const { session, authenticate } = useContext(authContext);
+  const { state, dispatch } = useContext(stateContext);
 
   return session?.strategy === 'google' ? (
     <LoggedInGoogleButton />
@@ -51,7 +53,10 @@ export const GoogleLoginButton = () => {
       }}
       render={(props) => {
         return (
-          <Button color="secondary" {...props}>
+          <Button
+            color={state.animatedBackground ? 'primary' : 'secondary'}
+            {...props}
+          >
             <GoogleIcon sx={{ mr: 1 }} />
             Login
           </Button>

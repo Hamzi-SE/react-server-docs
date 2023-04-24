@@ -38,11 +38,11 @@ export const Poll = ({
                   position: 'absolute',
                   width: `${percentage}%`,
                   height: `100%`,
-                  backgroundColor: 'secondary.main',
+                  backgroundColor: 'info.main',
                 }}
               />
               <ListItemText
-                sx={{ zIndex: 0 }}
+                sx={{ zIndex: 0}}
                 primary={value}
                 secondary={component?.props?.votes[i]}
               />

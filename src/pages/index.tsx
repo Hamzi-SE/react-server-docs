@@ -59,7 +59,8 @@ export const IndexPage = () => {
                 if (voted === 2) {
                   return (
                     <Alert severity="info">
-                      Please consider opening an issue on Github. This will help us a lot.
+                      Please consider opening an issue on Github. This will help
+                      us a lot.
                     </Alert>
                   );
                 }
@@ -107,7 +108,7 @@ export const IndexPage = () => {
             sx={{ display: 'flex', justifyContent: 'center', paddingTop: 1 }}
           >
             <Button
-              color="secondary"
+              color="primary"
               variant="contained"
               onClick={() => setCount(count + 1)}
             >

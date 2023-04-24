@@ -50,7 +50,7 @@ export default function ButtonAppBar() {
         <SensorsIcon></SensorsIcon>
         {connections}
         <IconButton
-          color={state.animatedBackground ? 'secondary' : 'inherit'}
+          color={state.animatedBackground ? 'primary' : 'inherit'}
           onClick={() => dispatch({ type: Actions.TOGGLE_ANIMATED_BACKGROUND })}
         >
           <AutoFixHighIcon />

@@ -36,6 +36,9 @@ const theme = createTheme({
     secondary: {
       main: '#1DC5E1', //'#F66528',
     },
+    // info: {
+    //   main: '#22D0F1',
+    // },
   },
 });
 
