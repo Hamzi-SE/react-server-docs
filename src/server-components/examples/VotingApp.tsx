@@ -2,17 +2,9 @@ import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { Alert, Box, Button, Typography } from '@mui/material';
 import { useComponent } from '@state-less/react-client';
-import { useEffect } from 'react';
 
 export const VotingApp = () => {
   const [component, { loading, error }] = useComponent('votings', {});
-
-  // we need to call wilsonScoreInterval() every time the upvotes or downvotes change
-  useEffect(() => {
-    if ((component?.props?.upvotes || component?.props?.downvotes) > 0) {
-      component?.props.wilsonScoreInterval();
-    }
-  }, [component?.props?.upvotes, component?.props?.downvotes]);
 
   if (loading) return <div>Loading...</div>;
 
